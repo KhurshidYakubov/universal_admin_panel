@@ -1,0 +1,80 @@
+.bg-gradient-primary {
+    background-color: #2b3140;
+    background-image: none;
+}
+
+.one_id_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 200px 0;
+}
+
+.one_id_login_inner {
+    text-align: center;
+    background: #f0f0f0;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.one_id_link {
+    margin-top: 30px;
+}
+
+.login_body{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login_body:before{
+    content: '';
+    position: absolute;
+    background: rgba(67, 67, 67, 0.79);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.card-header.py-3 {
+    display: flex;
+    align-items: center;
+}
+
+a.d-none.d-sm-inline-block.btn.btn-sm.btn-primary.shadow-sm {
+    margin-left: auto;
+}
+
+.sidebar_title span {
+    color: #fff;
+}
+
+.sidebar_title {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.pagination-nav {
+    margin-top: 50px;
+}
+
+.pagination-nav .pagination {
+    justify-content: center;
+}
+
+footer.sticky-footer.bg-white {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer.sticky-footer {
+    padding: 1rem 0;
+}
+
+a#lfm {
+    background-color: #4e73df;
+    color: #fff;
+    padding: 7px 2pc 7px 2pc;
+    border-radius: 0px 10px 10px 0px;
+}

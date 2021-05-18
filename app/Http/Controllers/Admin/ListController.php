@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ListCategory;
+use App\Models\Lists;
 use App\Models\ListType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class ListCategoryController extends Controller
+class ListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class ListCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $list_categories = ListCategory::orderBy('id', 'desc')->paginate(8);
+        $lists = Lists::orderBy('id', 'desc')->paginate(8);
 
         $id_filter = $request->id_filter;
         $status_filter = $request->status_filter;
@@ -28,24 +29,24 @@ class ListCategoryController extends Controller
 
 
         if ($id_filter) {
-            $list_categories = ListCategory::where('id', $id_filter)->orderBy('id', 'desc')->paginate(8);
+            $lists = Lists::where('id', $id_filter)->orderBy('id', 'desc')->paginate(8);
         } elseif ($title_filter) {
-            $list_categories = ListCategory::whereHas('listTypeTranslation', function (Builder $query) use ($title_filter) {
+            $lists = Lists::whereHas('listTranslation', function (Builder $query) use ($title_filter) {
                 $query->where('title', 'like', '%' . $title_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         } elseif ($status_filter == '1' || $status_filter == '0') {
-            $list_categories = ListCategory::where('status', $status_filter)->orderBy('id', 'desc')->paginate(8);
+            $lists = Lists::where('status', $status_filter)->orderBy('id', 'desc')->paginate(8);
         } elseif ($creator_filter) {
-            $list_categories = ListCategory::whereHas('creator', function (Builder $query) use ($creator_filter) {
+            $lists = Lists::whereHas('creator', function (Builder $query) use ($creator_filter) {
                 $query->where('username', 'like', '%' . $creator_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         } elseif ($modifier_filter) {
-            $list_categories = ListCategory::whereHas('updater', function (Builder $query) use ($modifier_filter) {
+            $lists = Lists::whereHas('updater', function (Builder $query) use ($modifier_filter) {
                 $query->where('username', 'like', '%' . $modifier_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         }
 
-        return view('admin.list_categories.index', compact('list_categories'));
+        return view('admin.lists.index', compact('lists'));
     }
 
     /**
@@ -55,9 +56,9 @@ class ListCategoryController extends Controller
      */
     public function create()
     {
-        $list_types = ListType::where('status', 1)->get();
+        $list_categories = ListCategory::where('status', 1)->get();
 
-        return view('admin.list_categories.create', compact('list_types'));
+        return view('admin.lists.create', compact('list_categories'));
     }
 
     /**
@@ -66,7 +67,7 @@ class ListCategoryController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function store(Request $request, User $user, ListCategory $listCategory)
+    public function store(Request $request, User $user, Lists $lists)
     {
 //        $request->validate([
 //            'title' => 'required',
@@ -81,7 +82,7 @@ class ListCategoryController extends Controller
 
         foreach ($slug_array as $item) {
             if (!is_null($item)) {
-                $get_slug_element = $listCategory->makeSlug($item);
+                $get_slug_element = $lists->makeSlug($item);
                 break;
             }
         }
@@ -90,22 +91,24 @@ class ListCategoryController extends Controller
             'slug' => $get_slug_element,
             'oz' => [
                 'title' => $request->oz_title,
+                'body' => $request->oz_body,
             ],
             'uz' => [
                 'title' => $request->uz_title,
+                'body' => $request->uz_body,
             ],
             'ru' => [
                 'title' => $request->ru_title,
+                'body' => $request->ru_body,
             ],
-            'image' => $request->filepath,
-            'color' => $request->color,
-            'type_id' => $request->type_id,
+            'anons_image' => $request->filepath,
+            'category_id' => $request->category_id,
             'status' => $request->status,
             'creator_id' => $user->id ?? 1,
         ];
 
-        $list_category = ListCategory::create($data);
-        return redirect()->route('list_categories.show', $list_category->id)->with('success', __('main.messages.create'));
+        $list = Lists::create($data);
+        return redirect()->route('lists.show', $list->id)->with('success', __('main.messages.create'));
     }
 
     /**
@@ -116,8 +119,8 @@ class ListCategoryController extends Controller
      */
     public function show(int $id)
     {
-        $list_category = ListCategory::findOrFail($id);
-        return view('admin.list_categories.show', compact('list_category'));
+        $list = Lists::findOrFail($id);
+        return view('admin.lists.show', compact('list'));
     }
 
     /**
@@ -128,10 +131,10 @@ class ListCategoryController extends Controller
      */
     public function edit(int $id)
     {
-        $list_category = ListCategory::findOrFail($id);
-        $list_types = ListType::where('status', 1)->get();
+        $list = ListCategory::findOrFail($id);
+        $list_categories = ListCategory::where('status', 1)->get();
 
-        return view('admin.list_categories.edit', compact('list_category', 'list_types'));
+        return view('admin.lists.edit', compact('list', 'list_categories'));
     }
 
     /**
@@ -141,7 +144,7 @@ class ListCategoryController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, ListCategory $listCategory): \Illuminate\Http\RedirectResponse
+    public function update(Request $request, Lists $lists): \Illuminate\Http\RedirectResponse
     {
 
         $user = auth()->user();
@@ -149,22 +152,24 @@ class ListCategoryController extends Controller
         $data = [
             'oz' => [
                 'title' => $request->oz_title,
+                'body' => $request->oz_body,
             ],
             'uz' => [
                 'title' => $request->uz_title,
+                'body' => $request->uz_body,
             ],
             'ru' => [
                 'title' => $request->ru_title,
+                'body' => $request->ru_body,
             ],
-            'image' => $request->filepath,
-            'color' => $request->color,
-            'type_id' => $request->type_id,
+            'anons_image' => $request->filepath,
+            'category_id' => $request->category_id,
             'status' => $request->status,
             'modifier_id' => $user->id ?? 1,
         ];
 
-        $listCategory->update($data);
-        return redirect()->route('list_categories.show', $listCategory->id)->with('success', __('main.messages.update'));
+        $lists->update($data);
+        return redirect()->route('lists.show', $lists->id)->with('success', __('main.messages.update'));
 
     }
 
@@ -176,8 +181,8 @@ class ListCategoryController extends Controller
      */
     public function destroy(int $id): \Illuminate\Http\RedirectResponse
     {
-        $list_category = ListCategory::find($id);
-        $list_category->delete();
-        return redirect()->route('list_categories.index')->with('warning', __('main.messages.delete'));
+        $list = Lists::find($id);
+        $list->delete();
+        return redirect()->route('lists.index')->with('warning', __('main.messages.delete'));
     }
 }

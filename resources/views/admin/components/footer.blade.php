@@ -54,7 +54,13 @@
 </script>
 
 <script>
-    CKEDITOR.replace('my-editor', options);
+    CKEDITOR.replace('my-editor-oz', options);
+</script>
+<script>
+    CKEDITOR.replace('my-editor-uz', options);
+</script>
+<script>
+    CKEDITOR.replace('my-editor-ru', options);
 </script>
 
 <script>

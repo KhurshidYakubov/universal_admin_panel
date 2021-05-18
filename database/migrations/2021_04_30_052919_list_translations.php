@@ -19,8 +19,8 @@ class ListTranslations extends Migration
             $table->string('locale')->index();
 
             // Foreign key to the main model
-            $table->unsignedBigInteger('list_id');
-            $table->unique(['list_id', 'locale']);
+            $table->unsignedBigInteger('lists_id');
+            $table->unique(['lists_id', 'locale']);
 
 //             Actual fields you want to translate
             $table->string('title', 255)->nullable();

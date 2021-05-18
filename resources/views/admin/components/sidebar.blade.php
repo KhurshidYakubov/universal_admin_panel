@@ -31,6 +31,21 @@
             <span>{{ __('main.categories') }}</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('lists.index') }}">
+            <i class="fas fa-stream"></i>
+            <span>{{ __('main.lists') }}</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('menu_categories.index') }}">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>{{ __('main.menu_categories') }}</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('menus.index') }}">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>{{ __('main.menu') }}</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-newspaper"></i>
             <span>{{ __('main.locale_test') }}</span></a>

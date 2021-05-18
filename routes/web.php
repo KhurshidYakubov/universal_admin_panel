@@ -35,6 +35,9 @@ Route::group([
             Route::resource('users', App\Http\Controllers\Admin\UserController::class);
             Route::resource('list_types', App\Http\Controllers\Admin\ListTypeController::class);
             Route::resource('list_categories', App\Http\Controllers\Admin\ListCategoryController::class);
+            Route::resource('lists', App\Http\Controllers\Admin\ListController::class);
+            Route::resource('menu_categories', App\Http\Controllers\Admin\MenuCategoryController::class);
+            Route::resource('menus', App\Http\Controllers\Admin\MenuController::class);
         });
     });
 

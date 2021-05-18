@@ -47,7 +47,7 @@ class ForeignKeys extends Migration
         });
 
         Schema::table('list_translations', function (Blueprint $table) {
-            $table->foreign('list_id')->references('id')->on('lists')->onDelete('CASCADE');
+            $table->foreign('lists_id')->references('id')->on('lists')->onDelete('CASCADE');
         });
         /*--------------------Lists|--------------------*/
 

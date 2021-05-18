@@ -38,4 +38,11 @@ return [
     'choose' => 'Choose',
     'image' => 'Image',
     'color' => 'Color',
+    'lists' => 'Lists',
+    'main_content' => 'Main body',
+    'menu_categories' => 'Menu categories',
+    'main_menu' => 'Main menu',
+    'order' => 'Order',
+    'link' => 'Link',
+    'link_type' => 'Link type',
 ];

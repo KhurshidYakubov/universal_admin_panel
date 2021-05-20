@@ -14,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static where(string $string, mixed $id_filter)
  * @method static orderBy(string $string, string $string1)
  * @property mixed id
+ * @property mixed role
  */
 class User extends Authenticatable
 {

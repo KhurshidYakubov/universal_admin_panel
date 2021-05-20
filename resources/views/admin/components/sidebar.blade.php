@@ -14,12 +14,13 @@
     </li>
 
     <hr class="sidebar-divider d-none d-md-block">
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('users.index') }}">
-            <i class="fas fa-users"></i>
-            <span>{{ __('main.users') }}</span></a>
-    </li>
+    @can('superadmin', auth()->user())
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('users.index') }}">
+                <i class="fas fa-users"></i>
+                <span>{{ __('main.users') }}</span></a>
+        </li>
+    @endcan
     <li class="nav-item">
         <a class="nav-link" href="{{ route('list_types.index') }}">
             <i class="fas fa-th-large"></i>

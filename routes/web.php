@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -31,13 +33,13 @@ Route::group([
         Route::group([
             'middleware' => ['auth'],
         ], function () {
-            Route::get('dashboard', [App\Http\Controllers\Admin\MainController::class, 'adminIndex'])->name('dashboard');
-            Route::resource('users', App\Http\Controllers\Admin\UserController::class);
-            Route::resource('list_types', App\Http\Controllers\Admin\ListTypeController::class);
-            Route::resource('list_categories', App\Http\Controllers\Admin\ListCategoryController::class);
-            Route::resource('lists', App\Http\Controllers\Admin\ListController::class);
-            Route::resource('menu_categories', App\Http\Controllers\Admin\MenuCategoryController::class);
-            Route::resource('menus', App\Http\Controllers\Admin\MenuController::class);
+            Route::get('dashboard', [App\Http\Controllers\Admin\MainController::class, 'adminIndex'])->name('dashboard')->middleware('can:admin-superadmin');
+            Route::resource('users', App\Http\Controllers\Admin\UserController::class)->middleware('can:superadmin');
+            Route::resource('list_types', App\Http\Controllers\Admin\ListTypeController::class)->middleware('can:admin-superadmin');
+            Route::resource('list_categories', App\Http\Controllers\Admin\ListCategoryController::class)->middleware('can:admin-superadmin');
+            Route::resource('lists', App\Http\Controllers\Admin\ListController::class)->middleware('can:admin-superadmin');
+            Route::resource('menu_categories', App\Http\Controllers\Admin\MenuCategoryController::class)->middleware('can:admin-superadmin');
+            Route::resource('menus', App\Http\Controllers\Admin\MenuController::class)->middleware('can:admin-superadmin');
         });
     });
 
@@ -51,7 +53,6 @@ Route::group([
         });
         $router->get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
     });
-
 
 
     Route::get('/file_test', function () {

@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
+/**
+ * @method registerPolicies()
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**

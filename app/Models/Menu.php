@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static whereHas(string $string, \Closure $param)
  * @method static create(array $data)
  * @method static findOrFail(int $id)
+ * @method static where(string $string, int $int)
  */
 class Menu extends Model
 {
@@ -42,7 +43,7 @@ class Menu extends Model
 
     public function menuCategory(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(ListType::class, 'id', 'category_id');
+        return $this->hasOne(MenuCategory::class, 'id', 'category_id');
     }
 
     public function submenus(): \Illuminate\Database\Eloquent\Relations\BelongsTo

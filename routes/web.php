@@ -22,9 +22,7 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
 
-    Route::get('/', function () {
-        return view('user.index');
-    })->name('welcome');
+    Route::get('/', [App\Http\Controllers\User\MainController::class, 'index'])->name('welcome');
 
     Route::group([
         'prefix' => 'admin',

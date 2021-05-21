@@ -20,7 +20,7 @@ class MenuCategory extends Model
 {
     use HasFactory;
     use Translatable;
-//    public $timestamps = false;
+    public $timestamps = false;
 
     public $useTranslationFallback = true;
     protected $table = 'menu_categories';

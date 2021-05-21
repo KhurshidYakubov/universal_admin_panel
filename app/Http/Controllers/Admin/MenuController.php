@@ -47,7 +47,7 @@ class MenuController extends Controller
     public function create()
     {
         $main_menu = Menu::all()->where('parent_id', null);
-        $menu_categories = MenuCategory::where('status', 1);
+        $menu_categories = MenuCategory::where('status', 1)->get();
 
         return view('admin.menus.create', compact('main_menu', 'menu_categories'));
     }
@@ -110,7 +110,7 @@ class MenuController extends Controller
     public function edit(int $id)
     {
         $main_menu = Menu::all()->where('parent_id', null);
-        $menu_categories = MenuCategory::where('status', 1);
+        $menu_categories = MenuCategory::where('status', 1)->get();
         $menu = Menu::findOrFail($id);
 
         return view('admin.menus.edit', compact('menu', 'main_menu', 'menu_categories'));

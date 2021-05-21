@@ -24,8 +24,9 @@
                                         @csrf
                                         <tr>
                                             <th>{{ __('main.id') }}</th>
+                                            <th>{{ __('main.categories') }}</th>
                                             <th>{{ __('main.main_menu') }}</th>
-                                            <th>{{ __('main.name') }}</th>
+                                            <th>{{ __('main.title') }}</th>
                                             <th>{{ __('main.manage') }}</th>
                                         </tr>
                                         <tr>
@@ -33,6 +34,7 @@
                                                 <input type="number" class="form-control" name="id_filter"
                                                        style="width: 70px; margin: 0 auto;">
                                             </th>
+                                            <th></th>
                                             <th>
                                                 <select name="type_filter" class="form-control"
                                                         onchange='submitForm();'>
@@ -56,6 +58,7 @@
                                     @foreach($menus as $menu)
                                         <tr>
                                             <th scope="row">{{ $menu->id }}</th>
+                                            <td>{{ $menu->menuCategory->title ?? '---'}}</td>
                                             @if($menu->parent_id === null)
                                                 <td><b>{{ __('main.main_menu') }}</b></td>
                                             @else

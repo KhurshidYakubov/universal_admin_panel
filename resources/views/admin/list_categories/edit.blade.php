@@ -26,12 +26,12 @@
                                            aria-controls="home" aria-selected="true">O'Z</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#uz" role="tab"
-                                           aria-controls="profile" aria-selected="false">УЗ</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#ru" role="tab"
                                            aria-controls="contact" aria-selected="false">РУ</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#en" role="tab"
+                                           aria-controls="profile" aria-selected="false">EN</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
@@ -47,16 +47,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="uz" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="form-group">
-                                            <label for="uz_title">{{ __('main.title') }} | Уз</label>
-                                            <input
-                                                class="form-control {{ $errors->has('uz_title') ? 'is-invalid' : '' }}"
-                                                type="text" name="uz_title" id="uz_title"
-                                                value="{{ $list_category->translate('uz')->title ?? '' }}">
-                                        </div>
-                                    </div>
-
                                     <div class="tab-pane fade" id="ru" role="tabpanel" aria-labelledby="contact-tab">
                                         <div class="form-group">
                                             <label for="ru_title">{{ __('main.title') }} | Ру</label>
@@ -64,6 +54,16 @@
                                                 class="form-control {{ $errors->has('ru_title') ? 'is-invalid' : '' }}"
                                                 type="text" name="ru_title" id="ru_title"
                                                 value="{{ $list_category->translate('ru')->title ?? '' }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="uz" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="form-group">
+                                            <label for="en_title">{{ __('main.title') }} | En</label>
+                                            <input
+                                                class="form-control {{ $errors->has('en_title') ? 'is-invalid' : '' }}"
+                                                type="text" name="en_title" id="en_title"
+                                                value="{{ $list_category->translate('en')->title ?? '' }}">
                                         </div>
                                     </div>
                                 </div>
@@ -84,9 +84,8 @@
                                         <div class="form-group">
                                             <strong>{{ __('main.status') }}</strong>
                                             <select class="form-control" name="status">
-                                                <option value="">---</option>
-                                                <option value="0">{{ __('main.inactive') }}</option>
                                                 <option value="1">{{ __('main.active') }}</option>
+                                                <option value="0">{{ __('main.inactive') }}</option>
                                             </select>
                                         </div>
                                     </div>

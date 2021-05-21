@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lists;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,9 @@ class MainController extends Controller
         $header = Menu::where('category_id', 3)->where('status', 1)->get();
         $header_tree = Menu::buildTree($header->toArray());
 
-        return view('user.index', compact('top_menu_tree', 'header_tree'));
+        $news = Lists::where('category_id', 2 )->where('status', 1 )->get();
+        $statistics = Lists::where('category_id', 3 )->where('status', 1 )->get();
+
+        return view('user.index', compact('top_menu_tree', 'header_tree', 'news', 'statistics'));
     }
 }

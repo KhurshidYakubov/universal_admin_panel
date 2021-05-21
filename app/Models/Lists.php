@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static orderBy(string $string, string $string1)
- * @method static where(string $string, mixed $status_filter)
+ * @method static where(string $string, mixed $filter)
  * @method static whereHas(string $string, \Closure $param)
  * @method static create(array $data)
  * @method static findOrFail(int $id)

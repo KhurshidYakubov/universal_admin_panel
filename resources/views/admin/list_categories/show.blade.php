@@ -38,12 +38,12 @@
                                aria-controls="home" aria-selected="true">O'Z</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#uz" role="tab"
-                               aria-controls="profile" aria-selected="false">ЎЗ</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#ru" role="tab"
                                aria-controls="contact" aria-selected="false">РУ</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#en" role="tab"
+                               aria-controls="profile" aria-selected="false">EN</a>
                         </li>
                     </ul>
 
@@ -59,22 +59,22 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane fade" id="uz" role="tabpanel" aria-labelledby="profile-tab">
-                            <table class="table table-striped table-hover">
-                                <tbody>
-                                <tr>
-                                    <td>{{ __('main.title') }}:</td>
-                                    <th scope="row">{{ $list_category->translate('uz')->title ?? '---' }}</th>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
                         <div class="tab-pane fade" id="ru" role="tabpanel" aria-labelledby="contact-tab">
                             <table class="table table-striped table-hover">
                                 <tbody>
                                 <tr>
                                     <td>{{ __('main.title') }}:</td>
                                     <th scope="row">{{ $list_category->translate('ru')->title ?? '---' }}</th>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="profile-tab">
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                <tr>
+                                    <td>{{ __('main.title') }}:</td>
+                                    <th scope="row">{{ $list_category->translate('en')->title ?? '---' }}</th>
                                 </tr>
                                 </tbody>
                             </table>

@@ -10,8 +10,8 @@
                     @include('admin.components.flash-message')
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h1 class="h3 mb-0 text-gray-800">{{ __('main.types') }}</h1>
-                            <a href="{{route('list_types.create')}}"
+                            <h1 class="h3 mb-0 text-gray-800">{{ __('main.statistics') }}</h1>
+                            <a href="{{route('statistics.create')}}"
                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                     class="fas fa-plus-circle"></i> {{ __('main.add') }}</a>
                         </div>
@@ -19,7 +19,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                    <form action="{{ route('list_types.index') }}" method="GET" id='myform'>
+                                    <form action="{{ route('statistics.index') }}" method="GET" id='myform'>
                                         @csrf
                                         <tr>
                                             <th scope="col">{{ __('main.id') }}</th>
@@ -61,27 +61,27 @@
                                     </form>
                                     </thead>
                                     <tbody>
-                                    @foreach($list_types as $list_type)
+                                    @foreach($lists as $list)
                                         <tr>
-                                            <th scope="row">{{ $list_type->id }}</th>
-                                            <td>{{ $list_type->translate(app()->getLocale())->title}}</td>
-                                            @if($list_type->status == 0)
+                                            <th scope="row">{{ $list->id }}</th>
+                                            <td>{{ $list->translate(app()->getLocale())->title ?? ''}}</td>
+                                            @if($list->status == 0)
                                                 <td>{{ __('main.inactive') }}</td>
-                                            @elseif($list_type->status == 1)
+                                            @elseif($list->status == 1)
                                                 <td>{{ __('main.active') }}</td>
                                             @endif
-                                            <td>{{ $list_type->creator->username }}</td>
-                                            <td>{{ $list_type->updater->username ?? '---' }}</td>
-                                            <td>{{ $list_type->created_at->format('d.m.Y | H:m:i') }}</td>
-                                            <td>{{ $list_type->updated_at->format('d.m.Y | H:m:i') }}</td>
+                                            <td>{{ $list->creator->username }}</td>
+                                            <td>{{ $list->updator->username ?? '---' }}</td>
+                                            <td>{{ $list->created_at->format('d.m.Y | H:m:i') }}</td>
+                                            <td>{{ $list->updated_at->format('d.m.Y | H:m:i') }}</td>
                                             <td>
-                                                <form action="{{ route('list_types.destroy', $list_type->id) }}"
+                                                <form action="{{ route('statistics.destroy', $list->id) }}"
                                                       method="POST">
-                                                    <a href="{{ route('list_types.show', $list_type->id) }}"
+                                                    <a href="{{ route('statistics.show', $list->id) }}"
                                                        class="btn btn-success btn-sm">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                    <a href="{{ route('list_types.edit', $list_type->id) }}"
+                                                    <a href="{{ route('statistics.edit', $list->id) }}"
                                                        class="btn btn-info btn-sm">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
@@ -96,7 +96,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                {{$list_types->links('admin.components.pagination')}}
+                                {{$lists->links('admin.components.pagination')}}
                             </div>
                         </div>
                     </div>

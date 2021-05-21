@@ -14,42 +14,55 @@
     </li>
 
     <hr class="sidebar-divider d-none d-md-block">
-    @can('superadmin', auth()->user())
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('users.index') }}">
-                <i class="fas fa-users"></i>
-                <span>{{ __('main.users') }}</span></a>
-        </li>
-    @endcan
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('list_types.index') }}">
-            <i class="fas fa-th-large"></i>
-            <span>{{ __('main.types') }}</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('list_categories.index') }}">
-            <i class="fas fa-th"></i>
-            <span>{{ __('main.categories') }}</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('lists.index') }}">
-            <i class="fas fa-stream"></i>
-            <span>{{ __('main.lists') }}</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('menu_categories.index') }}">
-            <i class="fas fa-ellipsis-h"></i>
-            <span>{{ __('main.menu_categories') }}</span></a>
-    </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('menus.index') }}">
             <i class="fas fa-ellipsis-h"></i>
             <span>{{ __('main.menu') }}</span></a>
     </li>
+
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-newspaper"></i>
-            <span>{{ __('main.locale_test') }}</span></a>
+        <a class="nav-link" href="{{ route('news.index') }}">
+            <i class="far fa-newspaper"></i>
+            <span>{{ __('main.news') }}</span></a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('statistics.index') }}">
+            <i class="fas fa-chart-bar"></i>
+            <span>{{ __('main.statistics') }}</span></a>
+    </li>
+
+    @can('superadmin', auth()->user())
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>SuperAdmin</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('users.index') }}">
+                        <i class="fas fa-users"></i>
+                        <span>{{ __('main.users') }}</span></a>
+
+                    <a class="collapse-item" href="{{ route('list_types.index') }}">
+                        <i class="fas fa-th-large"></i>
+                        <span>{{ __('main.types') }}</span></a>
+
+                    <a class="collapse-item" href="{{ route('list_categories.index') }}">
+                        <i class="fas fa-th"></i>
+                        <span>{{ __('main.categories') }}</span></a>
+
+                    <a class="collapse-item" href="{{ route('lists.index') }}">
+                        <i class="fas fa-stream"></i>
+                        <span>{{ __('main.lists') }}</span></a>
+
+                    <a class="collapse-item" href="{{ route('menu_categories.index') }}">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span>{{ __('main.menu_categories') }}</span></a>
+                </div>
+            </div>
+        </li>
+    @endcan
 </ul>
 <!-- End of Sidebar -->

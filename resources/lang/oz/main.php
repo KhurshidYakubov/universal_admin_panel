@@ -46,4 +46,7 @@ return [
     'order' => 'Navbat',
     'link' => 'Havola',
     'link_type' => 'Havola turi',
+    'news' => 'Yangiliklar',
+    'statistics' => 'Statistika',
+    'quantity' => 'Soni',
 ];

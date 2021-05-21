@@ -45,4 +45,7 @@ return [
     'order' => 'Order',
     'link' => 'Link',
     'link_type' => 'Link type',
+    'news' => 'News',
+    'statistics' => 'Statistics',
+    'quantity' => 'Quantity',
 ];

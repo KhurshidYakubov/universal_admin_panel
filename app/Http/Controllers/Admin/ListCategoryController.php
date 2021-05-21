@@ -75,8 +75,8 @@ class ListCategoryController extends Controller
         $user = auth()->user();
         $slug_array = [
             $request->oz_title,
-            $request->uz_title,
             $request->ru_title,
+            $request->en_title,
         ];
 
         foreach ($slug_array as $item) {
@@ -91,11 +91,11 @@ class ListCategoryController extends Controller
             'oz' => [
                 'title' => $request->oz_title,
             ],
-            'uz' => [
-                'title' => $request->uz_title,
-            ],
             'ru' => [
                 'title' => $request->ru_title,
+            ],
+            'en' => [
+                'title' => $request->en_title,
             ],
             'image' => $request->filepath,
             'color' => $request->color,
@@ -150,11 +150,11 @@ class ListCategoryController extends Controller
             'oz' => [
                 'title' => $request->oz_title,
             ],
-            'uz' => [
-                'title' => $request->uz_title,
-            ],
             'ru' => [
                 'title' => $request->ru_title,
+            ],
+            'en' => [
+                'title' => $request->en_title,
             ],
             'image' => $request->filepath,
             'color' => $request->color,

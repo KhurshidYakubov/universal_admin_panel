@@ -66,14 +66,16 @@ class ListTypeController extends Controller
     public function store(Request $request, User $user, ListType $listType)
     {
         $request->validate([
-            'title' => 'required',
+            'oz_title' => 'required',
+            'en_title' => 'required',
+            'ru_title' => 'required',
         ]);
         $get_slug_element = '';
         $user = auth()->user();
         $slug_array = [
             $request->oz_title,
-            $request->uz_title,
             $request->ru_title,
+            $request->en_title,
         ];
 
 
@@ -89,11 +91,11 @@ class ListTypeController extends Controller
             'oz' => [
                 'title' => $request->oz_title,
             ],
-            'uz' => [
-                'title' => $request->uz_title,
-            ],
             'ru' => [
                 'title' => $request->ru_title,
+            ],
+            'en' => [
+                'title' => $request->en_title,
             ],
             'status' => $request->status,
             'creator_id' => $user->id ?? 1,
@@ -141,15 +143,12 @@ class ListTypeController extends Controller
         $data = [
             'oz' => [
                 'title' => $request->oz_title,
-
-            ],
-            'uz' => [
-                'title' => $request->uz_title,
-
             ],
             'ru' => [
                 'title' => $request->ru_title,
-
+            ],
+            'en' => [
+                'title' => $request->en_title,
             ],
             'status' => $request->status,
             'modifier_id' => $user->id ?? 1,

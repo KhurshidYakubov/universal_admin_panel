@@ -21,7 +21,7 @@ use App\Helpers\CreateInputs;
                                 <h1 class="h3 mb-0 text-gray-800">{{ __('main.create') }}</h1>
                             </div>
 
-                            <form action="{{ route('list_categories.store') }}" method="POST"
+                            <form action="{{ route('statistics.store') }}" method="POST"
                                   enctype="multipart/form-data" autocomplete="off">
                                 @method('POST')
                                 @csrf
@@ -31,14 +31,28 @@ use App\Helpers\CreateInputs;
                                            aria-controls="home" aria-selected="true">O'Z</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#ru" role="tab"
-                                           aria-controls="contact" aria-selected="false">РУ</a>
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#ru" role="tab"
+                                           aria-controls="profile" aria-selected="false">РУ</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#en" role="tab"
-                                           aria-controls="profile" aria-selected="false">EN</a>
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#en" role="tab"
+                                           aria-controls="contact" aria-selected="false">EN</a>
                                     </li>
                                 </ul>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('main.categories') }}</strong>
+                                            <select class="form-control" name="category_id">
+                                                <option value="">---</option>
+                                                @foreach($list_categories as $list_category)
+                                                    <option
+                                                        value="{{ $list_category->id }}">{{ $list_category->translate(app()->getLocale())->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="oz" role="tabpanel"
                                          aria-labelledby="home-tab">
@@ -50,7 +64,6 @@ use App\Helpers\CreateInputs;
                                                 value="{{ old('oz_title', '') }}">
                                         </div>
                                     </div>
-
                                     <div class="tab-pane fade" id="ru" role="tabpanel" aria-labelledby="contact-tab">
                                         <div class="form-group">
                                             <label for="ru_title">{{ __('main.title') }} | Ру</label>
@@ -74,14 +87,19 @@ use App\Helpers\CreateInputs;
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>{{ __('main.types') }}</strong>
-                                            <select class="form-control" name="type_id">
-                                                <option value="">---</option>
-                                                @foreach($list_types as $list_type)
-                                                    <option
-                                                        value="{{ $list_type->id }}">{{ $list_type->translate(app()->getLocale())->title }}</option>
-                                                @endforeach
-                                            </select>
+                                            <strong>{{ __('main.quantity') }}</strong>
+                                            <input type="text" name="quantity" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong class="d-block">{{ __('main.image') }}</strong>
+                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text"
+                                                   name="filepath">
+                                            <a id="lfm" data-input="thumbnail" data-preview="holder">
+                                                {{ __('main.choose') }}
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -93,23 +111,6 @@ use App\Helpers\CreateInputs;
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong class="d-block">{{ __('main.image') }}</strong>
-                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text" name="filepath">
-                                            <a id="lfm" data-input="thumbnail" data-preview="holder">
-                                                {{ __('main.choose') }}
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>{{ __('main.color') }}</strong>
-                                            <input type="text" name="color" class="form-control">
-                                        </div>
-                                    </div>
-
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">
                                         <button type="submit" class="btn btn-primary">{{ __('main.save') }}</button>
                                     </div>

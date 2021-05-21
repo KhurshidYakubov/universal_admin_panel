@@ -1,8 +1,3 @@
-<?php
-
-use App\Helpers\CreateInputs;
-
-?>
 @extends('layouts.admin')
 @section('content')
 
@@ -18,12 +13,12 @@ use App\Helpers\CreateInputs;
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h3 mb-0 text-gray-800">{{ __('main.create') }}</h1>
+                                <h1 class="h3 mb-0 text-gray-800">{{ __('main.update') }}</h1>
                             </div>
 
-                            <form action="{{ route('list_categories.store') }}" method="POST"
+                            <form action="{{ route('news.update', $list->id) }}" method="POST"
                                   enctype="multipart/form-data" autocomplete="off">
-                                @method('POST')
+                                @method('PUT')
                                 @csrf
                                 <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-bottom: 20px;">
                                     <li class="nav-item" role="presentation">
@@ -47,7 +42,15 @@ use App\Helpers\CreateInputs;
                                             <input
                                                 class="form-control {{ $errors->has('oz_title') ? 'is-invalid' : '' }}"
                                                 type="text" name="oz_title" id="oz_title"
-                                                value="{{ old('oz_title', '') }}">
+                                                value="{{ $list->translate('oz')->title ?? '' }}"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ __('main.main_content') }} | O'z</label>
+                                            <textarea
+                                                class="form-control {{ $errors->has('oz_body') ? 'is-invalid' : '' }}"
+                                                name="oz_body"
+                                                id="my-editor-oz">{!!  $list->translate('oz')->body !!}</textarea>
                                         </div>
                                     </div>
 
@@ -57,29 +60,44 @@ use App\Helpers\CreateInputs;
                                             <input
                                                 class="form-control {{ $errors->has('ru_title') ? 'is-invalid' : '' }}"
                                                 type="text" name="ru_title" id="ru_title"
-                                                value="{{ old('ru_title', '') }}">
+                                                value="{{ $list->translate('ru')->title ?? '' }}">
                                         </div>
+                                        <div class="form-group">
+                                            <label>{{ __('main.main_content') }} | Ру</label>
+                                            <textarea
+                                                class="form-control {{ $errors->has('ru_body') ? 'is-invalid' : '' }}"
+                                                name="ru_body"
+                                                id="my-editor-ru">{!! $list->translate('ru')->body ?? '' !!}</textarea>
+                                        </div>
+
                                     </div>
 
                                     <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="form-group">
-                                            <label for="uz_title">{{ __('main.title') }} | En</label>
+                                            <label for="en_title">{{ __('main.title') }} | En</label>
                                             <input
                                                 class="form-control {{ $errors->has('en_title') ? 'is-invalid' : '' }}"
                                                 type="text" name="en_title" id="en_title"
-                                                value="{{ old('en_title', '') }}">
+                                                value="{{ $list->translate('en')->title ?? '' }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ __('main.main_content') }} | En</label>
+                                            <textarea
+                                                class="form-control {{ $errors->has('en_body') ? 'is-invalid' : '' }}"
+                                                name="en_body"
+                                                id="my-editor-uz">{!! $list->translate('en')->body ?? '' !!}</textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>{{ __('main.types') }}</strong>
-                                            <select class="form-control" name="type_id">
+                                            <strong>{{ __('main.categories') }}</strong>
+                                            <select class="form-control" name="category_id">
                                                 <option value="">---</option>
-                                                @foreach($list_types as $list_type)
+                                                @foreach($list_categories as $list_category)
                                                     <option
-                                                        value="{{ $list_type->id }}">{{ $list_type->translate(app()->getLocale())->title }}</option>
+                                                        value="{{ $list_category->id }}">{{ $list_category->translate(app()->getLocale())->title ?? '' }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -93,25 +111,22 @@ use App\Helpers\CreateInputs;
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong class="d-block">{{ __('main.image') }}</strong>
-                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text" name="filepath">
-                                            <a id="lfm" data-input="thumbnail" data-preview="holder">
-                                                {{ __('main.choose') }}
-                                            </a>
-                                        </div>
-                                    </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>{{ __('main.color') }}</strong>
-                                            <input type="text" name="color" class="form-control">
+                                            <strong class="d-block">{{ __('main.image') }}</strong>
+                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text"
+                                                   name="filepath" value="{{ $list->anons_image }}">
+                                            <a id="lfm" data-input="thumbnail" data-preview="holder">
+                                                {{ __('main.choose') }}
+                                            </a>
+                                            <img src='{{ $list->anons_image  }}' alt=""
+                                                 style="width: 100px; margin-top: 5px;">
                                         </div>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">
-                                        <button type="submit" class="btn btn-primary">{{ __('main.save') }}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('main.update') }}</button>
                                     </div>
                                 </div>
 

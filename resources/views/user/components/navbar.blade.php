@@ -68,9 +68,9 @@
                             EN
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-uz"></i> UZ</a>
-                            <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-ru"></i> RU</a>
-                            <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-gb"></i> EN</a>
+                            <a class="dropdown-item" href="/oz"><i class="flag-icon flag-icon-uz"></i> O'Z</a>
+                            <a class="dropdown-item" href="/ru"><i class="flag-icon flag-icon-ru"></i> RU</a>
+                            <a class="dropdown-item" href="/en"><i class="flag-icon flag-icon-gb"></i> EN</a>
                         </div>
                     </li>
                     <li class="nav-item">

@@ -48,4 +48,7 @@ return [
     'news' => 'News',
     'statistics' => 'Statistics',
     'quantity' => 'Quantity',
+    'links' => 'Links',
+    'blank' => 'Open on blank window',
+    'self' => 'Open on same window',
 ];

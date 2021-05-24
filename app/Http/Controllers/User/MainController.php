@@ -19,7 +19,8 @@ class MainController extends Controller
 
         $news = Lists::where('category_id', 2 )->where('status', 1 )->get();
         $statistics = Lists::where('category_id', 3 )->where('status', 1 )->get();
+        $links = Lists::where('category_id', 4 )->get();
 
-        return view('user.index', compact('top_menu_tree', 'header_tree', 'news', 'statistics'));
+        return view('user.index', compact('top_menu_tree', 'header_tree', 'news', 'statistics', 'links'));
     }
 }

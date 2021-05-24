@@ -49,4 +49,7 @@ return [
     'news' => 'Yangiliklar',
     'statistics' => 'Statistika',
     'quantity' => 'Soni',
+    'links' => 'Havolalar',
+    'blank' => 'Yangi oynada ochish',
+    'self' => 'Tegishli oynada ochilsin',
 ];

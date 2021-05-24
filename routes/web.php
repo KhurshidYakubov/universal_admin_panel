@@ -38,6 +38,7 @@ Route::group([
             Route::resource('lists', App\Http\Controllers\Admin\ListController::class)->middleware('can:admin-superadmin');
             Route::resource('news', App\Http\Controllers\Admin\NewsController::class)->middleware('can:admin-superadmin');
             Route::resource('statistics', App\Http\Controllers\Admin\StatisticsController::class)->middleware('can:admin-superadmin');
+            Route::resource('links', App\Http\Controllers\Admin\LinksController::class)->middleware('can:admin-superadmin');
             Route::resource('menu_categories', App\Http\Controllers\Admin\MenuCategoryController::class)->middleware('can:admin-superadmin');
             Route::resource('menus', App\Http\Controllers\Admin\MenuController::class)->middleware('can:admin-superadmin');
         });

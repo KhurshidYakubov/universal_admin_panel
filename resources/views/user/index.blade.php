@@ -172,31 +172,14 @@
     <section id="partners">
         <div class="container">
             <ul id="partners-slider" class="owl-carousel">
-                <li class="item">
-                    <a href="#" class="partners-slider-box">
-                        <img src="img/partners/gov.uz.png" alt=""/>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#" class="partners-slider-box">
-                        <img src="img/partners/edu.uz.png" alt=""/>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#" class="partners-slider-box">
-                        <img src="img/partners/uzedu.uz.png" alt=""/>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#" class="partners-slider-box">
-                        <img src="img/partners/lex.uz.png" alt=""/>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#" class="partners-slider-box">
-                        <img src="img/partners/data.gov.uz.png" alt=""/>
-                    </a>
-                </li>
+                @foreach($links as $item)
+                    <li class="item">
+                        <a href="{{ $item->link }}" class="partners-slider-box"
+                           target="{{ $item->link_type == 1 ? '_self' : '_blank' }}">
+                            <img src="{{ $item->anons_image }}" alt=""/>
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </section>

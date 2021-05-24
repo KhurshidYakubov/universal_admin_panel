@@ -32,6 +32,12 @@
             <span>{{ __('main.statistics') }}</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('links.index') }}">
+            <i class="fas fa-link"></i>
+            <span>{{ __('main.links') }}</span></a>
+    </li>
+
     @can('superadmin', auth()->user())
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

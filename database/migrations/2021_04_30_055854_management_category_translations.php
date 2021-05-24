@@ -13,14 +13,14 @@ class ManagementCategoryTranslations extends Migration
      */
     public function up()
     {
-        Schema::create('management_category_translations', function (Blueprint $table) {
+        Schema::create('manage_cat_translations', function (Blueprint $table) {
             // mandatory fields
             $table->bigIncrements('id'); // Laravel 5.8+ use bigIncrements() instead of increments()
             $table->string('locale')->index();
 
             // Foreign key to the main model
-            $table->unsignedBigInteger('cat_id');
-            $table->unique(['cat_id', 'locale']);
+            $table->unsignedBigInteger('management_category_id');
+            $table->unique(['management_category_id', 'locale']);
 
             // Actual fields you want to translate
             $table->string('title', 255)->nullable();
@@ -34,6 +34,6 @@ class ManagementCategoryTranslations extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('management_category_translations');
+        Schema::dropIfExists('manage_cat_translations');
     }
 }

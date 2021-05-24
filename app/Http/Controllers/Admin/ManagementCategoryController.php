@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ListCategory;
-use App\Models\Lists;
+use App\Models\ListType;
+use App\Models\ManagementCategory;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class ManagementCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,34 +19,34 @@ class NewsController extends Controller
      */
     public function index(Request $request)
     {
-        $lists = Lists::where('category_id', 1)->orderBy('id', 'desc')->paginate(8);
+        $management_categories = ManagementCategory::orderBy('id', 'desc')->paginate(8);
 
         $id_filter = $request->id_filter;
         $status_filter = $request->status_filter;
         $creator_filter = $request->creator_filter;
         $modifier_filter = $request->modifier_filter;
-        $title_filter = $request->title_filter;
+        $title_filter = $request->title_filte;
 
 
         if ($id_filter) {
-            $lists = Lists::where('id', $id_filter)->orderBy('id', 'desc')->paginate(8);
+            $management_categories = ManagementCategory::where('id', $id_filter)->orderBy('id', 'desc')->paginate(8);
         } elseif ($title_filter) {
-            $lists = Lists::whereHas('listTranslation', function (Builder $query) use ($title_filter) {
-                $query->where('category_id', 1)->where('title', 'like', '%' . $title_filter . '%');
+            $management_categories = ManagementCategory::whereHas('managementCatTranslation', function (Builder $query) use ($title_filter) {
+                $query->where('title', 'like', '%' . $title_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         } elseif ($status_filter == '1' || $status_filter == '0') {
-            $lists = Lists::where('category_id', 1)->where('status', $status_filter)->orderBy('id', 'desc')->paginate(8);
+            $management_categories = ManagementCategory::where('status', $status_filter)->orderBy('id', 'desc')->paginate(8);
         } elseif ($creator_filter) {
-            $lists = Lists::whereHas('creator', function (Builder $query) use ($creator_filter) {
-                $query->where('category_id', 1)->where('username', 'like', '%' . $creator_filter . '%');
+            $management_categories = ManagementCategory::whereHas('creator', function (Builder $query) use ($creator_filter) {
+                $query->where('username', 'like', '%' . $creator_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         } elseif ($modifier_filter) {
-            $lists = Lists::whereHas('updater', function (Builder $query) use ($modifier_filter) {
-                $query->where('category_id', 1)->where('username', 'like', '%' . $modifier_filter . '%');
+            $management_categories = ManagementCategory::whereHas('updater', function (Builder $query) use ($modifier_filter) {
+                $query->where('username', 'like', '%' . $modifier_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         }
 
-        return view('admin.news.index', compact('lists'));
+        return view('admin.management_categories.index', compact('management_categories'));
     }
 
     /**
@@ -55,9 +56,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('id', 1)->where('status', 1)->get();
-
-        return view('admin.news.create', compact('list_categories'));
+        return view('admin.management_categories.create');
     }
 
     /**
@@ -66,48 +65,32 @@ class NewsController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function store(Request $request, User $user, Lists $lists)
+    public function store(Request $request, User $user, ManagementCategory $managementCategory)
     {
 //        $request->validate([
 //            'title' => 'required',
 //        ]);
-        $get_slug_element = '';
         $user = auth()->user();
-        $slug_array = [
-            $request->oz_title,
-            $request->ru_title,
-            $request->en_title,
-        ];
 
-        foreach ($slug_array as $item) {
-            if (!is_null($item)) {
-                $get_slug_element = $lists->makeSlug($item);
-                break;
-            }
-        }
 
         $data = [
-            'slug' => $get_slug_element,
             'oz' => [
                 'title' => $request->oz_title,
-                'body' => $request->oz_body,
             ],
             'ru' => [
                 'title' => $request->ru_title,
-                'body' => $request->ru_body,
             ],
             'en' => [
                 'title' => $request->en_title,
-                'body' => $request->en_body,
             ],
-            'anons_image' => $request->filepath,
-            'category_id' => $request->category_id,
+            'image' => $request->filepath,
+            'color' => $request->color,
             'status' => $request->status,
             'creator_id' => $user->id ?? 1,
         ];
 
-        $list = Lists::create($data);
-        return redirect()->route('news.show', $list->id)->with('success', __('main.messages.create'));
+        $management_category = ManagementCategory::create($data);
+        return redirect()->route('management_categories.show', $management_category->id)->with('success', __('main.messages.create'));
     }
 
     /**
@@ -118,8 +101,8 @@ class NewsController extends Controller
      */
     public function show(int $id)
     {
-        $list = Lists::findOrFail($id);
-        return view('admin.news.show', compact('list'));
+        $management_category = ManagementCategory::findOrFail($id);
+        return view('admin.management_categories.show', compact('management_category'));
     }
 
     /**
@@ -130,10 +113,9 @@ class NewsController extends Controller
      */
     public function edit(int $id)
     {
-        $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('id', 1)->where('status', 1)->get();
+        $management_category = ManagementCategory::findOrFail($id);
 
-        return view('admin.news.edit', compact('list', 'list_categories'));
+        return view('admin.management_categories.edit', compact('management_category'));
     }
 
     /**
@@ -143,33 +125,30 @@ class NewsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Lists $lists, $id): \Illuminate\Http\RedirectResponse
+    public function update(Request $request, ManagementCategory $managementCategory): \Illuminate\Http\RedirectResponse
     {
-        $list = Lists::findOrFail($id);
+
         $user = auth()->user();
 
         $data = [
             'oz' => [
                 'title' => $request->oz_title,
-                'body' => $request->oz_body,
             ],
             'ru' => [
                 'title' => $request->ru_title,
-                'body' => $request->ru_body,
             ],
             'en' => [
                 'title' => $request->en_title,
-                'body' => $request->en_body,
             ],
-            'anons_image' => $request->filepath,
-            'category_id' => $request->category_id,
+            'image' => $request->filepath,
+            'color' => $request->color,
             'status' => $request->status,
             'modifier_id' => $user->id ?? 1,
         ];
 
+        $managementCategory->update($data);
+        return redirect()->route('management_categories.show', $managementCategory->id)->with('success', __('main.messages.update'));
 
-        $list->update($data);
-        return redirect()->route('news.show', $list->id)->with('success', __('main.messages.update'));
     }
 
     /**
@@ -180,8 +159,8 @@ class NewsController extends Controller
      */
     public function destroy(int $id): \Illuminate\Http\RedirectResponse
     {
-        $list = Lists::find($id);
-        $list->delete();
-        return redirect()->route('news.index')->with('warning', __('main.messages.delete'));
+        $management_category = ManagementCategory::find($id);
+        $management_category->delete();
+        return redirect()->route('management_categories.index')->with('warning', __('main.messages.delete'));
     }
 }

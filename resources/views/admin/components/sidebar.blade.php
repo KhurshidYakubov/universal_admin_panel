@@ -66,6 +66,10 @@
                     <a class="collapse-item" href="{{ route('menu_categories.index') }}">
                         <i class="fas fa-ellipsis-h"></i>
                         <span>{{ __('main.menu_categories') }}</span></a>
+
+                    <a class="collapse-item" href="{{ route('management_categories.index') }}">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span>{{ __('main.management_categories') }}</span></a>
                 </div>
             </div>
         </li>

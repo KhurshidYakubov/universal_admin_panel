@@ -77,20 +77,20 @@ class ForeignKeys extends Migration
 
 
         /*--------------------|Management Categories--------------------*/
-        Schema::table('management_categories', function (Blueprint $table) {
+        Schema::table('manage_cats', function (Blueprint $table) {
             $table->foreign('creator_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('modifier_id')->references('id')->on('users')->onDelete('set null');
         });
 
-        Schema::table('management_category_translations', function (Blueprint $table) {
-            $table->foreign('cat_id')->references('id')->on('management_categories')->onDelete('CASCADE');
+        Schema::table('manage_cat_translations', function (Blueprint $table) {
+            $table->foreign('management_category_id')->references('id')->on('manage_cats')->onDelete('CASCADE');
         });
         /*--------------------Management Categories|--------------------*/
 
 
         /*--------------------|Managements--------------------*/
         Schema::table('managements', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('management_categories')->onDelete('set null');
+            $table->foreign('category_id')->references('id')->on('manage_cats')->onDelete('set null');
             $table->foreign('creator_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('modifier_id')->references('id')->on('users')->onDelete('set null');
         });
@@ -172,13 +172,13 @@ class ForeignKeys extends Migration
 
 
         /*--------------------|Management Categories--------------------*/
-        Schema::table('management_categories', function (Blueprint $table) {
+        Schema::table('manage_cats', function (Blueprint $table) {
             $table->dropForeign('creator_id');
             $table->dropForeign('modifier_id');
         });
 
-        Schema::table('management_category_translations', function (Blueprint $table) {
-            $table->dropForeign('cat_id');
+        Schema::table('manage_cat_translations', function (Blueprint $table) {
+            $table->dropForeign('management_category_id');
         });
         /*--------------------Management Categories|--------------------*/
 

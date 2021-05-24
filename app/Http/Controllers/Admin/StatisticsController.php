@@ -18,7 +18,7 @@ class StatisticsController extends Controller
      */
     public function index(Request $request)
     {
-        $lists = Lists::where('category_id', 3)->orderBy('id', 'desc')->paginate(8);
+        $lists = Lists::where('category_id', 2)->orderBy('id', 'desc')->paginate(8);
 
         $id_filter = $request->id_filter;
         $status_filter = $request->status_filter;
@@ -31,17 +31,17 @@ class StatisticsController extends Controller
             $lists = Lists::where('id', $id_filter)->orderBy('id', 'desc')->paginate(8);
         } elseif ($title_filter) {
             $lists = Lists::whereHas('listTranslation', function (Builder $query) use ($title_filter) {
-                $query->where('category_id', 3)->where('title', 'like', '%' . $title_filter . '%');
+                $query->where('category_id', 2)->where('title', 'like', '%' . $title_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         } elseif ($status_filter == '1' || $status_filter == '0') {
-            $lists = Lists::where('category_id', 3)->where('status', $status_filter)->orderBy('id', 'desc')->paginate(8);
+            $lists = Lists::where('category_id', 2)->where('status', $status_filter)->orderBy('id', 'desc')->paginate(8);
         } elseif ($creator_filter) {
             $lists = Lists::whereHas('creator', function (Builder $query) use ($creator_filter) {
-                $query->where('category_id', 3)->where('username', 'like', '%' . $creator_filter . '%');
+                $query->where('category_id', 2)->where('username', 'like', '%' . $creator_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         } elseif ($modifier_filter) {
             $lists = Lists::whereHas('updater', function (Builder $query) use ($modifier_filter) {
-                $query->where('category_id', 3)->where('username', 'like', '%' . $modifier_filter . '%');
+                $query->where('category_id', 2)->where('username', 'like', '%' . $modifier_filter . '%');
             })->orderBy('id', 'desc')->paginate(8);
         }
 
@@ -55,7 +55,7 @@ class StatisticsController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('id', 3)->where('status', 1)->get();
+        $list_categories = ListCategory::where('id', 2)->where('status', 1)->get();
 
         return view('admin.statistics.create', compact('list_categories'));
     }
@@ -134,7 +134,7 @@ class StatisticsController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('id', 3)->where('status', 1)->get();
+        $list_categories = ListCategory::where('id', 2)->where('status', 1)->get();
 
         return view('admin.statistics.edit', compact('list', 'list_categories'));
     }

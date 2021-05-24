@@ -52,4 +52,5 @@ return [
     'links' => 'Havolalar',
     'blank' => 'Yangi oynada ochish',
     'self' => 'Tegishli oynada ochilsin',
+    'management_categories' => 'Boshqaruv kategoriyalari',
 ];

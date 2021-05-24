@@ -51,4 +51,5 @@ return [
     'links' => 'Links',
     'blank' => 'Open on blank window',
     'self' => 'Open on same window',
+    'management_categories' => 'Management categories',
 ];

@@ -19,56 +19,42 @@
         <nav class="navbar navbar-expand-md bg-transparent justify-content-center mt-2 d-none d-md-block mb-md-5">
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mx-3  text-white" href="#" data-toggle="dropdown">
-                            About
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mx-3 text-white" href="#" data-toggle="dropdown">
-                            Programmes
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mx-3 text-white" href="#" data-toggle="dropdown">
-                            International
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mx-3 text-white" href="#" data-toggle="dropdown">
-                            News & Events
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mx-3 text-white" href="#" data-toggle="dropdown">
-                            Apply
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
+                    @foreach($header_tree as $menu)
+                        @if(!isset($menu['children']))
+                            <li class="nav-item">
+                                @foreach($menu['translations'] as $tr)
+                                    @if($tr['locale'] == app()->getLocale())
+                                        <a class="nav-link mx-3 text-white"
+                                           href="#">
+                                            <span>{{ $tr['title'] }}</span>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </li>
+                        @endif
+                        @if(isset($menu['children']))
+                            <li class="nav-item dropdown">
+                                @foreach($menu['translations'] as $tr)
+                                    @if($tr['locale'] == app()->getLocale())
+                                        <a class="nav-link dropdown-toggle mx-3 text-white" href="#"
+                                           data-toggle="dropdown">
+                                            {{ $tr['title'] }}
+                                        </a>
+                                    @endif
+                                @endforeach
+                                @foreach($menu['children'] as $item)
+                                    <div class="dropdown-menu">
+                                        @foreach($item['translations'] as $sub_tr)
+                                            @if($sub_tr['locale'] == app()->getLocale())
+                                                <a class="dropdown-item" href="#">{{ $sub_tr['title']}}</a>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </li>
+                        @endif
+                    @endforeach
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mx-3 text-white" href="#" data-toggle="dropdown">
                             FAQ

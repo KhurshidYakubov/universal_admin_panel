@@ -13,7 +13,7 @@ class ManagementCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('management_categories', function (Blueprint $table){
+        Schema::create('manage_cats', function (Blueprint $table){
             $table->id();
 //            $table->string('title',255)->nullable();
             $table->string('image')->nullable();
@@ -32,6 +32,6 @@ class ManagementCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('management_categories');
+        Schema::dropIfExists('manage_cats');
     }
 }

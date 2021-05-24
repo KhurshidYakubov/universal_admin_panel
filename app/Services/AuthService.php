@@ -90,6 +90,7 @@ class AuthService
             ],
         ]);
 
+
         $response = json_decode($token->getBody()->getContents());
 
         if (isset($response->error))

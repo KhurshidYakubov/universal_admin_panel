@@ -53,4 +53,9 @@ return [
     'blank' => 'Янги ойнада очиш',
     'self' => 'Тегишли ойнада очилсин',
     'management_categories' => 'Бошқарув категориялари',
+    'team' => 'Команда',
+    'position'=> 'Лавозими',
+    'telegram_link' => 'Telegram профил',
+    'linkedin_link' => 'Linkedin профил',
+    'facebook_link' => 'Facebook профил',
 ];

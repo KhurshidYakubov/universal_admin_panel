@@ -53,4 +53,9 @@ return [
     'blank' => 'Открыть в новом окне',
     'self' => 'Открыть в том же окне',
     'management_categories' => 'Категории руководство',
+    'team' => 'Команда',
+    'position'=> 'Должность',
+    'telegram_link' => 'Telegram профиль',
+    'linkedin_link' => 'Linkedin профиль',
+    'facebook_link' => 'Facebook профиль',
 ];

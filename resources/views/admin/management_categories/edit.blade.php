@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="uz" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="form-group">
                                             <label for="en_title">{{ __('main.title') }} | En</label>
                                             <input

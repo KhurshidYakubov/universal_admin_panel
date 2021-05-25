@@ -38,110 +38,34 @@
                 Meet <span class="text-green">Our Team</span>
             </h1>
             <div class="row team-card-box justify-content-center">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 team-card-item bg-xs-white">
-                    <div class="team-card">
-                        <div class="team-card-image" style="background-image:url('img/team/member1.png');"></div>
-                        <div class="bg-xs-white-inner">
-                            <div class="team-card-data">
-                                <div class="team-card-data-name">
-                                    Prof. Janpolat Kudaybergenov
-                                </div>
-                                <div class="team-card-data-position">
-                                    Vice-Rector for Academi…
-                                </div>
-                                <div class="team-card-data-social d-flex justify-content-center">
-                                    <a class="btn-social">
-                                        <i class="fab fa-telegram-plane"></i>
-                                    </a>
-                                    <a class="btn-social">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="btn-social">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 team-card-item bg-xs-white">
-                    <div class="team-card">
-                        <div class="team-card-image" style="background-image:url('img/team/member1.png');"></div>
-                        <div class="bg-xs-white-inner">
-                            <div class="team-card-data">
-                                <div class="team-card-data-name">
-                                    Prof. Janpolat Kudaybergenov
-                                </div>
-                                <div class="team-card-data-position">
-                                    Vice-Rector for Academi…
-                                </div>
-                                <div class="team-card-data-social d-flex justify-content-center">
-                                    <a class="btn-social">
-                                        <i class="fab fa-telegram-plane"></i>
-                                    </a>
-                                    <a class="btn-social">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="btn-social">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
+                @foreach($team_members as $member)
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 team-card-item bg-xs-white">
+                        <div class="team-card">
+                            <div class="team-card-image" style="background-image:url('{{ $member->leader_image }}');"></div>
+                            <div class="bg-xs-white-inner">
+                                <div class="team-card-data">
+                                    <div class="team-card-data-name">
+                                       {{ $member->translate(app()->getLocale())->title }}
+                                    </div>
+                                    <div class="team-card-data-position">
+                                        {{ $member->translate(app()->getLocale())->leader }}
+                                    </div>
+                                    <div class="team-card-data-social d-flex justify-content-center">
+                                        <a class="btn-social" href="{{ $member->phone }}" target="_blank">
+                                            <i class="fab fa-telegram-plane"></i>
+                                        </a>
+                                        <a class="btn-social" href="{{ $member->email }}" target="_blank">
+                                            <i class="fab fa-linkedin"></i>
+                                        </a>
+                                        <a class="btn-social" href="{{ $member->fax }}" target="_blank">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 team-card-item bg-xs-white">
-                    <div class="team-card">
-                        <div class="team-card-image" style="background-image:url('img/team/member1.png');"></div>
-                        <div class="bg-xs-white-inner">
-                            <div class="team-card-data">
-                                <div class="team-card-data-name">
-                                    Prof. Janpolat Kudaybergenov
-                                </div>
-                                <div class="team-card-data-position">
-                                    Vice-Rector for Academi…
-                                </div>
-                                <div class="team-card-data-social d-flex justify-content-center">
-                                    <a class="btn-social">
-                                        <i class="fab fa-telegram-plane"></i>
-                                    </a>
-                                    <a class="btn-social">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="btn-social">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 team-card-item bg-xs-white">
-                    <div class="team-card">
-                        <div class="team-card-image" style="background-image:url('img/team/member1.png');"></div>
-                        <div class="bg-xs-white-inner">
-                            <div class="team-card-data">
-                                <div class="team-card-data-name">
-                                    Prof. Janpolat Kudaybergenov
-                                </div>
-                                <div class="team-card-data-position">
-                                    Vice-Rector for Academi…
-                                </div>
-                                <div class="team-card-data-social d-flex justify-content-center">
-                                    <a class="btn-social">
-                                        <i class="fab fa-telegram-plane"></i>
-                                    </a>
-                                    <a class="btn-social">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="btn-social">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

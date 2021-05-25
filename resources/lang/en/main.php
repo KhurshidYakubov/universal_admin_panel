@@ -52,4 +52,8 @@ return [
     'blank' => 'Open on blank window',
     'self' => 'Open on same window',
     'management_categories' => 'Management categories',
+    'position'=> 'Position',
+    'telegram_link' => 'Telegram profile',
+    'linkedin_link' => 'Linkedin profile',
+    'facebook_link' => 'Facebook profile',
 ];

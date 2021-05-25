@@ -53,4 +53,9 @@ return [
     'blank' => 'Yangi oynada ochish',
     'self' => 'Tegishli oynada ochilsin',
     'management_categories' => 'Boshqaruv kategoriyalari',
+    'team' => 'Komanda',
+    'position'=> 'Lavozimi',
+    'telegram_link' => 'Telegram profili',
+    'linkedin_link' => 'Linkedin profili',
+    'facebook_link' => 'Facebook profili',
 ];

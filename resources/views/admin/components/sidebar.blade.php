@@ -38,6 +38,12 @@
             <span>{{ __('main.links') }}</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('managements.index') }}">
+            <i class="fas fa-user-friends"></i>
+            <span>{{ __('main.team') }}</span></a>
+    </li>
+
     @can('superadmin', auth()->user())
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

@@ -42,6 +42,7 @@ Route::group([
             Route::resource('menu_categories', App\Http\Controllers\Admin\MenuCategoryController::class)->middleware('can:superadmin');
             Route::resource('menus', App\Http\Controllers\Admin\MenuController::class)->middleware('can:admin-superadmin');
             Route::resource('management_categories', App\Http\Controllers\Admin\ManagementCategoryController::class)->middleware('can:superadmin');
+            Route::resource('managements', App\Http\Controllers\Admin\ManagementController::class)->middleware('can:admin-superadmin');
         });
     });
 

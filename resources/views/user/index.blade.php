@@ -19,7 +19,7 @@
             <div class="row post-card-box">
                 @foreach($news as $item)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 post-card-item">
-                        <a href="#" class="card shadow-sm">
+                        <a href="{{ route('news-item', $item->id) }}" class="card shadow-sm">
                             <div class="card-header text-center">
                                 <div class="card-header-image"
                                      style="background-image:url('{{ $item->anons_image }}');"></div>
@@ -41,7 +41,7 @@
                 @endforeach
             </div>
             <div class="text-center text-sm-center text-md-right text-lg-right mt-1">
-                <a href="#" class="btn btn-link text-dark font-weight-bold text-decoration-none">Все новости</a>
+                <a href="{{ route('news-list') }}" class="btn btn-link text-dark font-weight-bold text-decoration-none">{{ __('main.all_news') }}</a>
             </div>
         </div>
     </section>

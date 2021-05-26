@@ -60,4 +60,6 @@ return [
     'vacancies' => 'Vacancies',
     'internal_files' => 'Files',
     'pages' => 'Pages',
+    'all_news' => 'All news',
+    'more' => 'More',
 ];

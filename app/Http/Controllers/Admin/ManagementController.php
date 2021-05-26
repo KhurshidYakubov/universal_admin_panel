@@ -18,7 +18,7 @@ class ManagementController extends Controller
      */
     public function index(Request $request)
     {
-        $managements = Management::orderBy('id', 'desc')->paginate(8);
+        $managements = Management::where('category_id', 1)->orderBy('id', 'desc')->paginate(8);
 
         $id_filter = $request->id_filter;
         $status_filter = $request->status_filter;

@@ -62,5 +62,6 @@ return [
     'vacancies' => 'Vakansiyalar',
     'internal_files' => 'Fayllar',
     'pages' => 'Sahifalar',
-
+    'all_news' => 'Barcha yangiliklar',
+    'more' => 'Batafsil',
 ];

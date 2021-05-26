@@ -25,6 +25,11 @@ Route::group([
     Route::get('/', [App\Http\Controllers\User\MainController::class, 'index'])->name('welcome');
     Route::get('/programs', [App\Http\Controllers\User\MainController::class, 'programs'])->name('programs');
     Route::get('/page/{slug}', [App\Http\Controllers\User\MainController::class, 'pages'])->name('pages');
+    Route::get('/news-list', [App\Http\Controllers\User\MainController::class, 'newsList'])->name('news-list');
+    Route::get('/news/{id}', [App\Http\Controllers\User\MainController::class, 'newsItem'])->name('news-item');
+    Route::get('/team-list', [App\Http\Controllers\User\MainController::class, 'teamList'])->name('team-list');
+    Route::get('/programs-list', [App\Http\Controllers\User\MainController::class, 'programsList'])->name('programs-list');
+    Route::get('/programs/{id}', [App\Http\Controllers\User\MainController::class, 'programsItem'])->name('programs-item');
 
     Route::group([
         'prefix' => 'admin',

@@ -60,7 +60,7 @@ class ProgramController extends Controller
     public function create()
     {
         $leaders = Management::where('category_id', 1)->where('status', 1)->get();
-        $list_categories = ListCategory::where('type_id', 3)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 4)->where('status', 1)->get();
 
         return view('admin.programs.create', compact('list_categories', 'leaders'));
     }
@@ -138,7 +138,7 @@ class ProgramController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('id', 1)->where('status', 1)->get();
+        $list_categories = ListCategory::where('id', 4)->where('status', 1)->get();
 
         return view('admin.programs.edit', compact('list', 'list_categories'));
     }

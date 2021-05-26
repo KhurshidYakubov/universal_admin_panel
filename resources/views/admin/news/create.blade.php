@@ -90,7 +90,6 @@ use App\Helpers\CreateInputs;
                                         <div class="form-group">
                                             <strong>{{ __('main.categories') }}</strong>
                                             <select class="form-control" name="category_id">
-                                                <option value="">---</option>
                                                 @foreach($list_categories as $list_category)
                                                     <option
                                                         value="{{ $list_category->id }}">{{ $list_category->translate(app()->getLocale())->title }}</option>

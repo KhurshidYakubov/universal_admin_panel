@@ -62,4 +62,6 @@ return [
     'vacancies' => 'Вакасии',
     'internal_files' => 'Файлы',
     'pages' => 'Страницы',
+    'all_news' => 'Все новости',
+    'more' => 'Подробнее',
 ];

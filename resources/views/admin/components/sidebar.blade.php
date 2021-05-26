@@ -43,6 +43,29 @@
             <i class="fas fa-user-friends"></i>
             <span>{{ __('main.team') }}</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('programs.index') }}">
+            <i class="fas fa-graduation-cap"></i>
+            <span>{{ __('main.programs') }}</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('vacancies.index') }}">
+            <i class="far fa-address-card"></i>
+            <span>{{ __('main.vacancies') }}</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('internal_files.index') }}">
+            <i class="far fa-file-alt"></i>
+            <span>{{ __('main.internal_files') }}</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('pages.index') }}">
+            <i class="fas fa-pager"></i>
+            <span>{{ __('main.pages') }}</span></a>
+    </li>
 
     @can('superadmin', auth()->user())
         <li class="nav-item">

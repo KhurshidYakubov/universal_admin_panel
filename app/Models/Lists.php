@@ -28,6 +28,7 @@ class Lists extends Model
     protected $fillable = [
         'category_id',
         'slug',
+        'leaders',
         'anons_image',
         'body_image',
         'utube_code',
@@ -85,5 +86,15 @@ class Lists extends Model
     public function listCat(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(ListCategory::class, 'id', 'category_id');
+    }
+
+    public function setLeaderAttribute($value)
+    {
+        $this->attributes['leaders'] = json_encode($value);
+    }
+    
+    public function getLeaderAttribute($value)
+    {
+        return $this->attributes['leaders'] = json_decode($value);
     }
 }

@@ -58,4 +58,8 @@ return [
     'telegram_link' => 'Telegram профиль',
     'linkedin_link' => 'Linkedin профиль',
     'facebook_link' => 'Facebook профиль',
+    'programs' => 'Программы',
+    'vacancies' => 'Вакасии',
+    'internal_files' => 'Файлы',
+    'pages' => 'Страницы',
 ];

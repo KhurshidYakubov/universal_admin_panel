@@ -56,4 +56,8 @@ return [
     'telegram_link' => 'Telegram profile',
     'linkedin_link' => 'Linkedin profile',
     'facebook_link' => 'Facebook profile',
+    'programs' => 'Programs',
+    'vacancies' => 'Vacancies',
+    'internal_files' => 'Files',
+    'pages' => 'Pages',
 ];

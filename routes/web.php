@@ -23,6 +23,8 @@ Route::group([
 ], function () {
 
     Route::get('/', [App\Http\Controllers\User\MainController::class, 'index'])->name('welcome');
+    Route::get('/programs', [App\Http\Controllers\User\MainController::class, 'programs'])->name('programs');
+    Route::get('/page/{slug}', [App\Http\Controllers\User\MainController::class, 'pages'])->name('pages');
 
     Route::group([
         'prefix' => 'admin',
@@ -43,6 +45,10 @@ Route::group([
             Route::resource('menus', App\Http\Controllers\Admin\MenuController::class)->middleware('can:admin-superadmin');
             Route::resource('management_categories', App\Http\Controllers\Admin\ManagementCategoryController::class)->middleware('can:superadmin');
             Route::resource('managements', App\Http\Controllers\Admin\ManagementController::class)->middleware('can:admin-superadmin');
+            Route::resource('programs', App\Http\Controllers\Admin\ProgramController::class)->middleware('can:admin-superadmin');
+            Route::resource('vacancies', App\Http\Controllers\Admin\VacancyController::class)->middleware('can:admin-superadmin');
+            Route::resource('internal_files', App\Http\Controllers\Admin\InternalFileController::class)->middleware('can:admin-superadmin');
+            Route::resource('pages', App\Http\Controllers\Admin\PageController::class)->middleware('can:admin-superadmin');
         });
     });
 

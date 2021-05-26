@@ -61,4 +61,16 @@ class ListType extends Model
         return $this->hasOne(User::class, 'id', 'modifier_id');
     }
 
+    public function testRelation(): \Illuminate\Database\Eloquent\Relations\HasOneThrough
+    {
+        return $this->hasOneThrough(
+            Lists::class,
+            ListCategory::class,
+            'type_id',
+            'category_id',
+            'id',
+            'id'
+        );
+    }
+
 }

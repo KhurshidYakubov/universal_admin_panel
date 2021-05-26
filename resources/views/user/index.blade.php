@@ -1,6 +1,19 @@
 @extends('layouts.user')
 @section('content')
-    @include('user.components.navbar')
+    @include('user.components.top_menu')
+    <section id="header" data-parallax="scroll" data-image-src="img/header-bg-min.png" class="d-flex flex-column">
+        <div class="container d-flex justify-content-center align-items-center flex-fill">
+            @include('user.components.navbar')
+            <div class="hero text-center justify-content-center">
+                <h1 class="text-white font-weight-bold">ABOUT US</h1>
+                <p class="mt-3">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet.
+                </p>
+            </div>
+        </div>
+    </section>
     <section id="posts">
         <div class="container">
             <div class="row post-card-box">
@@ -41,11 +54,12 @@
                 @foreach($team_members as $member)
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12 team-card-item bg-xs-white">
                         <div class="team-card">
-                            <div class="team-card-image" style="background-image:url('{{ $member->leader_image }}');"></div>
+                            <div class="team-card-image"
+                                 style="background-image:url('{{ $member->leader_image }}');"></div>
                             <div class="bg-xs-white-inner">
                                 <div class="team-card-data">
                                     <div class="team-card-data-name">
-                                       {{ $member->translate(app()->getLocale())->title }}
+                                        {{ $member->translate(app()->getLocale())->title }}
                                     </div>
                                     <div class="team-card-data-position">
                                         {{ $member->translate(app()->getLocale())->leader }}

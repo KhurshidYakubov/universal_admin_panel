@@ -17,10 +17,11 @@ class ListsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id')->nullable();
 //            $table->string('title',255)->nullable();
-            $table->string('slug',255)->nullable();
+            $table->string('slug', 255)->nullable();
 //            $table->text('short_description')->nullable();
 //            $table->text('description')->nullable();
 //            $table->text('body')->nullable();
+            $table->longText('leaders')->nullable();
             $table->string('anons_image')->nullable();
             $table->string('body_image')->nullable();
             $table->string('utube_code', 255)->nullable();

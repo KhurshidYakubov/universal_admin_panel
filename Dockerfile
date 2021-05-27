@@ -42,7 +42,9 @@ COPY . /var/www
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
 
-RUN chown -R www:www /var/www
+RUN composer install
+RUN artisan key:generate
+RUN artisan migrate --seed
 
 # Change current user to www
 USER www

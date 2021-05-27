@@ -43,8 +43,11 @@ COPY . /var/www
 COPY --chown=www:www . /var/www
 
 RUN composer install
-RUN php artisan key:generate
-RUN php artisan migrate --seed
+
+RUN chown -R www-data:www-data \
+    /var/www/storage \
+    /var/www/bootstrap/cache
+
 
 # Change current user to www
 USER www

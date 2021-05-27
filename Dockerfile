@@ -44,9 +44,7 @@ COPY --chown=www:www . /var/www
 
 RUN composer install
 
-RUN chown -R www-data:www-data \
-    /var/www/storage \
-    /var/www/bootstrap/cache
+RUN chown -R www:www /var/www
 
 
 # Change current user to www

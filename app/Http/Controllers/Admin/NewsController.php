@@ -55,7 +55,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('id', 1)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 1)->where('status', 1)->get();
 
         return view('admin.news.create', compact('list_categories'));
     }
@@ -131,7 +131,7 @@ class NewsController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('id', 1)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 1)->where('status', 1)->get();
 
         return view('admin.news.edit', compact('list', 'list_categories'));
     }

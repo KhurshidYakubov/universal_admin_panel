@@ -55,7 +55,7 @@ class InternalFileController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('id', 6)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 6)->where('status', 1)->get();
 
         return view('admin.internal_files.create', compact('list_categories'));
     }
@@ -131,7 +131,7 @@ class InternalFileController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('id', 6)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 6)->where('status', 1)->get();
 
         return view('admin.internal_files.edit', compact('list', 'list_categories'));
     }

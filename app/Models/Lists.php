@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static create(array $data)
  * @method static findOrFail(int $id)
  * @method static find(int $id)
+ * @method static first()
  */
 class Lists extends Model
 {
@@ -92,7 +93,7 @@ class Lists extends Model
     {
         $this->attributes['leaders'] = json_encode($value);
     }
-    
+
     public function getLeaderAttribute($value)
     {
         return $this->attributes['leaders'] = json_decode($value);

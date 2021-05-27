@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static create(array $data)
  * @method static find(int $id)
  * @method static findOrFail(int $id)
+ * @method static first()
  */
 class ListCategory extends Model
 {

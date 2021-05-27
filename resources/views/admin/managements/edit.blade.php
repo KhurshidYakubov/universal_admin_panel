@@ -41,8 +41,7 @@
                                                 <strong>{{ __('main.categories') }}</strong>
                                                 <select class="form-control" name="category_id">
                                                     @foreach($management_categories as $management_category)
-                                                        <option
-                                                            value="{{ $management_category->id }}">{{ $management_category->translate(app()->getLocale())->title ?? '---' }}</option>
+                                                        <option value="{{ $management_category->id }}" {{ $management->category_id == $management_category->id ? 'selected' : '' }}>{{ $management_category->translate(app()->getLocale())->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

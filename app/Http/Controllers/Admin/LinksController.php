@@ -55,7 +55,7 @@ class LinksController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('id', 3)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 2)->where('status', 1)->get();
 
         return view('admin.links.create', compact('list_categories'));
     }
@@ -109,9 +109,10 @@ class LinksController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('id', 3)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 2)->where('status', 1)->get();
+        $selectedCategory = ListCategory::first()->type_id;
 
-        return view('admin.links.edit', compact('list', 'list_categories'));
+        return view('admin.links.edit', compact('list', 'list_categories', 'selectedCategory'));
     }
 
     /**

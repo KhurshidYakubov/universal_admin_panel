@@ -55,7 +55,7 @@ class StatisticsController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('id', 2)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 2)->where('status', 1)->get();
 
         return view('admin.statistics.create', compact('list_categories'));
     }
@@ -70,9 +70,9 @@ class StatisticsController extends Controller
     {
         $request->validate([
             'oz_title' => 'required',
-            'en_title' => 'required',
             'ru_title' => 'required',
-            'anons_image' => 'required|mimes:jpg,jpeg,png'
+            'en_title' => 'required',
+//            'anons_image' => 'required|mimes:jpg,jpeg,png'
         ]);
         $get_slug_element = '';
         $user = auth()->user();
@@ -134,7 +134,7 @@ class StatisticsController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('id', 2)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 2)->where('status', 1)->get();
 
         return view('admin.statistics.edit', compact('list', 'list_categories'));
     }

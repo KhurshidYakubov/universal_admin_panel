@@ -42,6 +42,8 @@ COPY . /var/www
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
 
+RUN chown -R www:www /var/www
+
 # Change current user to www
 USER www
 

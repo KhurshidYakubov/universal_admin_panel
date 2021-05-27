@@ -9,6 +9,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
+/**
+ * @author Khurshid Yakubov | khurshid.yakubov@gmail.com
+ **/
 class NewsController extends Controller
 {
     /**
@@ -68,9 +71,18 @@ class NewsController extends Controller
      */
     public function store(Request $request, User $user, Lists $lists)
     {
-//        $request->validate([
-//            'title' => 'required',
-//        ]);
+        $request->validate([
+            'oz_title' => 'required',
+            'ru_title' => 'required',
+            'en_title' => 'required',
+            'oz_body' => 'required',
+            'ru_body' => 'required',
+            'en_body' => 'required',
+            'status' => 'required',
+            'category_id' => 'required',
+            'filepath' => 'required',
+        ]);
+
         $get_slug_element = '';
         $user = auth()->user();
         $slug_array = [
@@ -145,6 +157,19 @@ class NewsController extends Controller
      */
     public function update(Request $request, Lists $lists, $id): \Illuminate\Http\RedirectResponse
     {
+        $request->validate([
+            'oz_title' => 'required',
+            'ru_title' => 'required',
+            'en_title' => 'required',
+            'oz_body' => 'required',
+            'ru_body' => 'required',
+            'en_body' => 'required',
+            'status' => 'required',
+            'category_id' => 'required',
+            'filepath' => 'required',
+        ]);
+
+
         $list = Lists::findOrFail($id);
         $user = auth()->user();
 

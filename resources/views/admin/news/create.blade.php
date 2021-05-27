@@ -51,7 +51,8 @@ use App\Helpers\CreateInputs;
                                         </div>
                                         <div class="form-group">
                                             <label>{{ __('main.main_content') }} | O'z</label>
-                                            <textarea id="my-editor-oz" class="form-control {{ $errors->has('oz_body') ? 'is-invalid' : '' }}"
+                                            <textarea id="my-editor-oz"
+                                                      class="form-control {{ $errors->has('oz_body') ? 'is-invalid' : '' }}"
                                                       name="oz_body">{{ old('oz_body') }}</textarea>
                                         </div>
                                     </div>
@@ -65,8 +66,9 @@ use App\Helpers\CreateInputs;
                                         </div>
                                         <div class="form-group">
                                             <label>{{ __('main.main_content') }} | Ру</label>
-                                            <textarea id="my-editor-ru" class="form-control {{ $errors->has('ru_body') ? 'is-invalid' : '' }}"
-                                                      name="ru_body" >{{ old('ru_body') }}</textarea>
+                                            <textarea id="my-editor-ru"
+                                                      class="form-control {{ $errors->has('ru_body') ? 'is-invalid' : '' }}"
+                                                      name="ru_body">{{ old('ru_body') }}</textarea>
                                         </div>
                                     </div>
 
@@ -80,7 +82,8 @@ use App\Helpers\CreateInputs;
                                         </div>
                                         <div class="form-group">
                                             <label>{{ __('main.main_content') }} | En</label>
-                                            <textarea id="my-editor-uz" class="form-control {{ $errors->has('en_body') ? 'is-invalid' : '' }}"
+                                            <textarea id="my-editor-uz"
+                                                      class="form-control {{ $errors->has('en_body') ? 'is-invalid' : '' }}"
                                                       name="en_body">{{ old('en_body') }}</textarea>
                                         </div>
                                     </div>
@@ -109,7 +112,9 @@ use App\Helpers\CreateInputs;
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong class="d-block">{{ __('main.image') }}</strong>
-                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text" name="filepath">
+                                            <input id="thumbnail"
+                                                   class="form-control col-sm-11 d-inline {{ $errors->has('filepath') ? 'is-required' : '' }}"
+                                                   type="text" name="filepath" value="{{ old('filepath') }}">
                                             <a id="lfm" data-input="thumbnail" data-preview="holder">
                                                 {{ __('main.choose') }}
                                             </a>

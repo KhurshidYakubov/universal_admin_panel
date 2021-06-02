@@ -54,17 +54,6 @@
                             </li>
                         @endif
                     @endforeach
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mx-3 text-white" href="#" data-toggle="dropdown">
-                            FAQ
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </nav>

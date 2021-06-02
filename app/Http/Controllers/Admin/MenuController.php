@@ -60,9 +60,12 @@ class MenuController extends Controller
      */
     public function store(Request $request, User $user)
     {
-//        $request->validate([
-//            'title' => 'required',
-//        ]);
+        $request->validate([
+            'category_id' => 'required',
+            'link_type' => 'required',
+            'status' => 'required',
+        ]);
+
         $user = auth()->user();
 
         $data = [
@@ -77,7 +80,7 @@ class MenuController extends Controller
             ],
             'category_id' => $request->category_id,
             'parent_id' => $request->parent_id,
-            'image' => $request->image,
+//            'image' => $request->image,
             'link' => $request->link,
             'link_type' => $request->link_type,
             'order' => $request->order,
@@ -125,6 +128,11 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu): \Illuminate\Http\RedirectResponse
     {
+        $request->validate([
+            'category_id' => 'required',
+            'link_type' => 'required',
+            'status' => 'required',
+        ]);
 
         $user = auth()->user();
 
@@ -140,7 +148,7 @@ class MenuController extends Controller
             ],
             'category_id' => $request->category_id,
             'parent_id' => $request->parent_id,
-            'image' => $request->image,
+//            'image' => $request->image,
             'link' => $request->link,
             'link_type' => $request->link_type,
             'order' => $request->order,

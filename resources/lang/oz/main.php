@@ -64,4 +64,7 @@ return [
     'pages' => 'Sahifalar',
     'all_news' => 'Barcha yangiliklar',
     'more' => 'Batafsil',
+    'page_type' => 'Sahifa turi',
+    'static' => 'Statik',
+    'dynamic' => 'Dinamik',
 ];

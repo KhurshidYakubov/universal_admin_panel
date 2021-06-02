@@ -64,7 +64,7 @@
 </script>
 
 <script>
-    var route_prefix = "http://127.0.0.1:8000/oz/laravel-filemanager";
+    var route_prefix = "/laravel-filemanager";
     $('#lfm').filemanager('image', {prefix: route_prefix});
 </script>
 

@@ -30,7 +30,7 @@
                                     @foreach($menu['translations'] as $tr)
                                         @if($tr['locale'] == app()->getLocale())
                                             <a class="nav-link text-dark mx-0 mx-lg-3 font-weight-bolder"
-                                               href="#">
+                                               href="{{ $menu['link'] }}">
                                                 <span>{{ $tr['title'] }}</span>
                                             </a>
                                         @endif
@@ -47,15 +47,16 @@
                                             </a>
                                         @endif
                                     @endforeach
-                                    @foreach($menu['children'] as $item)
-                                        <div class="dropdown-menu">
+                                    <div class="dropdown-menu">
+                                        @foreach($menu['children'] as $item)
                                             @foreach($item['translations'] as $sub_tr)
                                                 @if($sub_tr['locale'] == app()->getLocale())
-                                                    <a class="dropdown-item" href="#">{{ $sub_tr['title']}}</a>
+                                                    <a class="dropdown-item"
+                                                       href="{{ $menu['link'] }}">{{ $sub_tr['title']}}</a>
                                                 @endif
                                             @endforeach
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </li>
                             @endif
                         @endforeach
@@ -65,7 +66,13 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle font-weight-bold text-dark" href="#" id="navbar-language"
                            data-toggle="dropdown">
-                            EN
+                            @if(app()->getLocale() == 'oz')
+                                O'Z
+                            @elseif(app()->getLocale() == 'ru')
+                                RU
+                            @elseif(app()->getLocale() == 'en')
+                                EN
+                            @endif
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/oz"><i class="flag-icon flag-icon-uz"></i> O'Z</a>

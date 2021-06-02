@@ -99,6 +99,14 @@ class ForeignKeys extends Migration
             $table->foreign('management_id')->references('id')->on('managements')->onDelete('CASCADE');
         });
         /*--------------------Managements|--------------------*/
+
+
+        /*--------------------|Program Leaders--------------------*/
+        Schema::table('program_leaders', function (Blueprint $table) {
+            $table->foreign('list_id')->references('id')->on('lists')->onDelete('set null');
+            $table->foreign('management_id')->references('id')->on('managements')->onDelete('set null');
+        });
+        /*--------------------Program Leaders|--------------------*/
     }
 
     /**
@@ -194,5 +202,14 @@ class ForeignKeys extends Migration
             $table->dropForeign('management_id');
         });
         /*--------------------Managements|--------------------*/
+
+
+        /*--------------------|Program Leaders--------------------*/
+        Schema::table('program_leaders', function (Blueprint $table) {
+            $table->dropForeign('list_id');
+            $table->dropForeign('management_id');
+        });
+        /*--------------------Program Leaders|--------------------*/
+
     }
 }

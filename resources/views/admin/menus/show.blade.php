@@ -38,12 +38,12 @@
                                aria-controls="home" aria-selected="true">O'Z</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#uz" role="tab"
-                               aria-controls="profile" aria-selected="false">ЎЗ</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#ru" role="tab"
                                aria-controls="contact" aria-selected="false">РУ</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#en" role="tab"
+                               aria-controls="profile" aria-selected="false">EN</a>
                         </li>
                     </ul>
 
@@ -99,16 +99,16 @@
                             <td>{{ __('main.link_type') }}:</td>
                             <th scope="row">{{ $menu->link_type ?? '---'}}</th>
                         </tr>
-                        <tr>
-                            <td>{{ __('main.image') }}:</td>
-                            <th scope="row">
-                                @if(isset($menu->image))
-                                    <img src='{{ $menu->image }}' alt="" style="width: 100px;">
-                                @else
-                                    ---
-                                @endif
-                            </th>
-                        </tr>
+{{--                        <tr>--}}
+{{--                            <td>{{ __('main.image') }}:</td>--}}
+{{--                            <th scope="row">--}}
+{{--                                @if(isset($menu->image))--}}
+{{--                                    <img src='{{ $menu->image }}' alt="" style="width: 100px;">--}}
+{{--                                @else--}}
+{{--                                    -----}}
+{{--                                @endif--}}
+{{--                            </th>--}}
+{{--                        </tr>--}}
                         <tr>
                             <td>{{ __('main.order') }}:</td>
                             <th scope="row">{{ $menu->order ?? '---'}}</th>

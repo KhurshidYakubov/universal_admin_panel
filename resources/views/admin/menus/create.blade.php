@@ -24,12 +24,12 @@
                                            aria-controls="home" aria-selected="true">O'Z</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#uz" role="tab"
-                                           aria-controls="profile" aria-selected="false">ЎЗ</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#ru" role="tab"
                                            aria-controls="contact" aria-selected="false">РУ</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#en" role="tab"
+                                           aria-controls="profile" aria-selected="false">EN</a>
                                     </li>
                                 </ul>
                                 <div class="row">
@@ -69,21 +69,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="uz" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="form-group">
-                                            <label for="uz_title">{{ __('main.title') }} | Ўз</label>
-                                            <input
-                                                class="form-control {{ $errors->has('uz_title') ? 'is-invalid' : '' }}"
-                                                type="text" name="uz_title" id="uz_title">
-                                        </div>
-                                    </div>
-
                                     <div class="tab-pane fade" id="ru" role="tabpanel" aria-labelledby="contact-tab">
                                         <div class="form-group">
                                             <label for="ru_title">{{ __('main.title') }} | Ру</label>
                                             <input
                                                 class="form-control {{ $errors->has('ru_title') ? 'is-invalid' : '' }}"
                                                 type="text" name="ru_title" id="ru_title">
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="form-group">
+                                            <label for="en_title">{{ __('main.title') }} | En</label>
+                                            <input
+                                                class="form-control {{ $errors->has('uz_title') ? 'is-invalid' : '' }}"
+                                                type="text" name="en_title" id="en_title">
                                         </div>
                                     </div>
                                 </div>
@@ -96,25 +96,25 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <strong>{{ __('main.link_type') }}</strong>
+                                            <strong>{{ __('main.page_type') }}</strong>
                                             <select class="form-control" name="link_type">
                                                 <option value="">--{{ __('main.choose') }}--</option>
-                                                <option value="0">{{ __('main.inactive') }}</option>
-                                                <option value="1">{{ __('main.active') }}</option>
+                                                <option value="1">{{ __('main.static') }}</option>
+                                                <option value="10">{{ __('main.dynamic') }}</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong class="d-block">{{ __('main.image') }}</strong>
-                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text"
-                                                   name="image">
-                                            <a id="lfm" data-input="thumbnail" data-preview="holder">
-                                                {{ __('main.choose') }}
-                                            </a>
-                                        </div>
-                                    </div>
+{{--                                    <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong class="d-block">{{ __('main.image') }}</strong>--}}
+{{--                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text"--}}
+{{--                                                   name="image">--}}
+{{--                                            <a id="lfm" data-input="thumbnail" data-preview="holder">--}}
+{{--                                                {{ __('main.choose') }}--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">

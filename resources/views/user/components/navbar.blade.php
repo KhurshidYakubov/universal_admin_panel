@@ -7,10 +7,13 @@
                     <li class="nav-item">
                         @foreach($menu['translations'] as $tr)
                             @if($tr['locale'] == app()->getLocale())
-                                <a class="nav-link mx-3 text-white"
-                                   href="#">
-                                    <span>{{ $tr['title'] }}</span>
-                                </a>
+                                @if($menu['link_type'] == 1)
+                                    <a class="nav-link mx-3 text-white"
+                                       href="{{ route('pages', $menu['link'] ?? '') }}">{{ $tr['title']}}</a>
+                                @else
+                                    <a class="nav-link mx-3 text-white"
+                                       href="{{ $menu['link'] }}">{{ $tr['title']}}</a>
+                                @endif
                             @endif
                         @endforeach
                     </li>
@@ -25,15 +28,21 @@
                                 </a>
                             @endif
                         @endforeach
-                        @foreach($menu['children'] as $item)
-                            <div class="dropdown-menu">
+                        <div class="dropdown-menu">
+                            @foreach($menu['children'] as $item)
                                 @foreach($item['translations'] as $sub_tr)
                                     @if($sub_tr['locale'] == app()->getLocale())
-                                        <a class="dropdown-item" href="#">{{ $sub_tr['title']}}</a>
+                                        @if($item['link_type'] == 1)
+                                            <a class="dropdown-item"
+                                               href="{{ route('pages', $item['link'] ?? '') }}">{{ $sub_tr['title']}}</a>
+                                        @else
+                                            <a class="dropdown-item"
+                                               href="{{ $item['link'] }}">{{ $sub_tr['title']}}</a>
+                                        @endif
                                     @endif
                                 @endforeach
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </li>
                 @endif
             @endforeach

@@ -62,4 +62,7 @@ return [
     'pages' => 'Pages',
     'all_news' => 'All news',
     'more' => 'More',
+    'page_type' => 'Page type',
+    'static' => 'Static',
+    'dynamic' => 'Dynamic',
 ];

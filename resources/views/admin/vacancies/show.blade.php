@@ -114,16 +114,16 @@
                                 <th scope="row">{{ __('main.active') ?? '---'}}</th>
                             @endif
                         </tr>
-                        <tr>
-                            <td>{{ __('main.image') }}:</td>
-                            <th scope="row">
-                                @if(isset($list->anons_image))
-                                    <img src='{{ $list->anons_image }}' alt="" style="width: 100px;">
-                                @else
-                                    ---
-                                @endif
-                            </th>
-                        </tr>
+                        {{--                        <tr>--}}
+                        {{--                            <td>{{ __('main.image') }}:</td>--}}
+                        {{--                            <th scope="row">--}}
+                        {{--                                @if(isset($list->anons_image))--}}
+                        {{--                                    <img src='{{ $list->anons_image }}' alt="" style="width: 100px;">--}}
+                        {{--                                @else--}}
+                        {{--                                    -----}}
+                        {{--                                @endif--}}
+                        {{--                            </th>--}}
+                        {{--                        </tr>--}}
                         <tr>
                             <td>{{ __('main.creator') }}:</td>
                             <th scope="row">{{ $list->creator->username }}</th>
@@ -133,10 +133,10 @@
                             <td>{{ __('main.modifier') }}:</td>
                             <th scope="row">{{ $list->updater->username ?? '---'}}</th>
                         </tr>
-                        <tr>
-                            <td>Slug:</td>
-                            <th scope="row">{{ $list->slug }}</th>
-                        </tr>
+                        {{--                        <tr>--}}
+                        {{--                            <td>Slug:</td>--}}
+                        {{--                            <th scope="row">{{ $list->slug }}</th>--}}
+                        {{--                        </tr>--}}
                         <tr>
                             <td>{{ __('main.created_at') }}:</td>
                             <th scope="row">{{ $list->created_at->format('d.m.Y | H:m:i') }}</th>

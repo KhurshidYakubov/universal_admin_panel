@@ -16,47 +16,7 @@
 
             </a>
         </div>
-        <nav class="navbar navbar-expand-md bg-transparent justify-content-center mt-2 d-none d-md-block mb-md-5">
-            <div class="collapse navbar-collapse justify-content-center">
-                <ul class="navbar-nav">
-                    @foreach($header_tree as $menu)
-                        @if(!isset($menu['children']))
-                            <li class="nav-item">
-                                @foreach($menu['translations'] as $tr)
-                                    @if($tr['locale'] == app()->getLocale())
-                                        <a class="nav-link mx-3 text-white"
-                                           href="#">
-                                            <span>{{ $tr['title'] }}</span>
-                                        </a>
-                                    @endif
-                                @endforeach
-                            </li>
-                        @endif
-                        @if(isset($menu['children']))
-                            <li class="nav-item dropdown">
-                                @foreach($menu['translations'] as $tr)
-                                    @if($tr['locale'] == app()->getLocale())
-                                        <a class="nav-link dropdown-toggle mx-3 text-white" href="#"
-                                           data-toggle="dropdown">
-                                            {{ $tr['title'] }}
-                                        </a>
-                                    @endif
-                                @endforeach
-                                @foreach($menu['children'] as $item)
-                                    <div class="dropdown-menu">
-                                        @foreach($item['translations'] as $sub_tr)
-                                            @if($sub_tr['locale'] == app()->getLocale())
-                                                <a class="dropdown-item" href="#">{{ $sub_tr['title']}}</a>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                @endforeach
-                            </li>
-                        @endif
-                    @endforeach
-                </ul>
-            </div>
-        </nav>
+        @include('user.components.navbar')
         <div class="mt-5 text-center">
             <div class="phone mt-5 pt-4">
                 <a href="tel:+998712222222">

@@ -55,7 +55,7 @@ class VacancyController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('type_id', 5)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 4)->where('status', 1)->get();
 
         return view('admin.vacancies.create', compact('list_categories'));
     }
@@ -68,9 +68,12 @@ class VacancyController extends Controller
      */
     public function store(Request $request, User $user, Lists $lists)
     {
-//        $request->validate([
-//            'title' => 'required',
-//        ]);
+        $request->validate([
+            'oz_title' => 'required',
+            'oz_body' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
+        ]);
         $get_slug_element = '';
         $user = auth()->user();
         $slug_array = [
@@ -100,7 +103,7 @@ class VacancyController extends Controller
                 'title' => $request->en_title,
                 'body' => $request->en_body,
             ],
-            'anons_image' => $request->filepath,
+//            'anons_image' => $request->filepath,
             'category_id' => $request->category_id,
             'status' => $request->status,
             'creator_id' => $user->id ?? 1,
@@ -131,7 +134,7 @@ class VacancyController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('type_id', 5)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 4)->where('status', 1)->get();
 
         return view('admin.vacancies.edit', compact('list', 'list_categories'));
     }
@@ -145,6 +148,12 @@ class VacancyController extends Controller
      */
     public function update(Request $request, Lists $lists, $id): \Illuminate\Http\RedirectResponse
     {
+        $request->validate([
+            'oz_title' => 'required',
+            'oz_body' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
+        ]);
         $list = Lists::findOrFail($id);
         $user = auth()->user();
 
@@ -161,7 +170,7 @@ class VacancyController extends Controller
                 'title' => $request->en_title,
                 'body' => $request->en_body,
             ],
-            'anons_image' => $request->filepath,
+//            'anons_image' => $request->filepath,
             'category_id' => $request->category_id,
             'status' => $request->status,
             'modifier_id' => $user->id ?? 1,

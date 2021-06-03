@@ -55,7 +55,7 @@ class InternalFileController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('type_id', 6)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 5)->where('status', 1)->get();
 
         return view('admin.internal_files.create', compact('list_categories'));
     }
@@ -68,9 +68,12 @@ class InternalFileController extends Controller
      */
     public function store(Request $request, User $user, Lists $lists)
     {
-//        $request->validate([
-//            'title' => 'required',
-//        ]);
+        $request->validate([
+            'oz_title' => 'required',
+            'anons_image' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
+        ]);
         $get_slug_element = '';
         $user = auth()->user();
         $slug_array = [
@@ -90,15 +93,12 @@ class InternalFileController extends Controller
             'slug' => $get_slug_element,
             'oz' => [
                 'title' => $request->oz_title,
-                'body' => $request->oz_body,
             ],
             'ru' => [
                 'title' => $request->ru_title,
-                'body' => $request->ru_body,
             ],
             'en' => [
                 'title' => $request->en_title,
-                'body' => $request->en_body,
             ],
             'anons_image' => $request->filepath,
             'category_id' => $request->category_id,
@@ -131,7 +131,7 @@ class InternalFileController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('type_id', 6)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 5)->where('status', 1)->get();
 
         return view('admin.internal_files.edit', compact('list', 'list_categories'));
     }
@@ -145,21 +145,24 @@ class InternalFileController extends Controller
      */
     public function update(Request $request, Lists $lists, $id): \Illuminate\Http\RedirectResponse
     {
+        $request->validate([
+            'oz_title' => 'required',
+            'anons_image' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
+        ]);
         $list = Lists::findOrFail($id);
         $user = auth()->user();
 
         $data = [
             'oz' => [
                 'title' => $request->oz_title,
-                'body' => $request->oz_body,
             ],
             'ru' => [
                 'title' => $request->ru_title,
-                'body' => $request->ru_body,
             ],
             'en' => [
                 'title' => $request->en_title,
-                'body' => $request->en_body,
             ],
             'anons_image' => $request->filepath,
             'category_id' => $request->category_id,

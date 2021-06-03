@@ -1,0 +1,15 @@
+a.list-group-item {
+    font-size: 1.143em;
+    color: #545454;
+    text-decoration: none;
+    transition: all .35s ease;
+}
+
+.list-group-item i {
+    margin-right: 10px;
+}
+
+section#top-menu {
+    position: relative;
+    z-index: 2;
+}

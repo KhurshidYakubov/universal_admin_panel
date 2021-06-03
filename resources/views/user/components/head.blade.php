@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/custom.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <title>IT Park</title>
 </head>

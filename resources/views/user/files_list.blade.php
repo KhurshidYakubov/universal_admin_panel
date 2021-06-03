@@ -27,22 +27,14 @@
             <div class="files-block clearfix py-5">
                 <div class="row">
                     <div class="col-md-6 col-12">
-                        <div class="list-group list-group-flush list-group-flush-icon">
-                            <a href="#" class="list-group-item">Лидер направления "Искусственный интеллект"</a>
-                            <a href="#" class="list-group-item">Ассистент Направления "Финансовые Технологии"</a>
-                            <a href="#" class="list-group-item">Morbi leo risus</a>
-                            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                            <a href="#" class="list-group-item">Vestibulum at eros</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <div class="list-group list-group-flush list-group-flush-icon">
-                            <a href="#" class="list-group-item">Лидер направления "Искусственный интеллект"</a>
-                            <a href="#" class="list-group-item">Ассистент Направления "Финансовые Технологии"</a>
-                            <a href="#" class="list-group-item">Morbi leo risus</a>
-                            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                            <a href="#" class="list-group-item">Vestibulum at eros</a>
-                        </div>
+                        @foreach($files as $file)
+                            <div class="list-group list-group-flush">
+                                <a href="{{ $file->anons_image }}"
+                                   class="list-group-item"><i
+                                        class="fas fa-file-download"></i>{{ $file->translate(app()->getLocale())->title ?? '' }}
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -34,6 +34,28 @@
                                            aria-controls="profile" aria-selected="false">EN</a>
                                     </li>
                                 </ul>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>{{ __('main.categories') }}</strong>
+                                            <select class="form-control" name="category_id">
+                                                @foreach($list_categories as $list_category)
+                                                    <option
+                                                        value="{{ $list_category->id }}" {{ $list->category_id == $list_category->id ? 'selected' : '' }}>{{ $list_category->translate(app()->getLocale())->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>{{ __('main.status') }}</strong>
+                                            <select class="form-control" name="status">
+                                                <option value="1">{{ __('main.active') }}</option>
+                                                <option value="0">{{ __('main.inactive') }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="oz" role="tabpanel"
                                          aria-labelledby="home-tab">
@@ -45,13 +67,6 @@
                                                 value="{{ $list->translate('oz')->title ?? '' }}"
                                                 required>
                                         </div>
-                                        <div class="form-group">
-                                            <label>{{ __('main.main_content') }} | O'z</label>
-                                            <textarea
-                                                class="form-control {{ $errors->has('oz_body') ? 'is-invalid' : '' }}"
-                                                name="oz_body"
-                                                id="my-editor-oz">{!!  $list->translate('oz')->body !!}</textarea>
-                                        </div>
                                     </div>
 
                                     <div class="tab-pane fade" id="ru" role="tabpanel" aria-labelledby="contact-tab">
@@ -62,14 +77,6 @@
                                                 type="text" name="ru_title" id="ru_title"
                                                 value="{{ $list->translate('ru')->title ?? '' }}">
                                         </div>
-                                        <div class="form-group">
-                                            <label>{{ __('main.main_content') }} | Ру</label>
-                                            <textarea
-                                                class="form-control {{ $errors->has('ru_body') ? 'is-invalid' : '' }}"
-                                                name="ru_body"
-                                                id="my-editor-ru">{!! $list->translate('ru')->body ?? '' !!}</textarea>
-                                        </div>
-
                                     </div>
 
                                     <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="profile-tab">
@@ -80,36 +87,9 @@
                                                 type="text" name="en_title" id="en_title"
                                                 value="{{ $list->translate('en')->title ?? '' }}">
                                         </div>
-                                        <div class="form-group">
-                                            <label>{{ __('main.main_content') }} | En</label>
-                                            <textarea
-                                                class="form-control {{ $errors->has('en_body') ? 'is-invalid' : '' }}"
-                                                name="en_body"
-                                                id="my-editor-uz">{!! $list->translate('en')->body ?? '' !!}</textarea>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>{{ __('main.categories') }}</strong>
-                                            <select class="form-control" name="category_id">
-                                                @foreach($list_categories as $list_category)
-                                                    <option value="{{ $list_category->id }}" {{ $list->category_id == $list_category->id ? 'selected' : '' }}>{{ $list_category->translate(app()->getLocale())->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>{{ __('main.status') }}</strong>
-                                            <select class="form-control" name="status">
-                                                <option value="1">{{ __('main.active') }}</option>
-                                                <option value="0">{{ __('main.inactive') }}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong class="d-block">{{ __('main.image') }}</strong>

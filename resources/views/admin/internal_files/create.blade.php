@@ -39,6 +39,28 @@ use App\Helpers\CreateInputs;
                                            aria-controls="contact" aria-selected="false">EN</a>
                                     </li>
                                 </ul>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>{{ __('main.categories') }}</strong>
+                                            <select class="form-control" name="category_id">
+                                                @foreach($list_categories as $list_category)
+                                                    <option
+                                                        value="{{ $list_category->id }}">{{ $list_category->translate(app()->getLocale())->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>{{ __('main.status') }}</strong>
+                                            <select class="form-control" name="status">
+                                                <option value="1">{{ __('main.active') }}</option>
+                                                <option value="0">{{ __('main.inactive') }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="oz" role="tabpanel"
                                          aria-labelledby="home-tab">
@@ -49,11 +71,6 @@ use App\Helpers\CreateInputs;
                                                 type="text" name="oz_title" id="oz_title"
                                                 value="{{ old('oz_title', '') }}">
                                         </div>
-                                        <div class="form-group">
-                                            <label>{{ __('main.main_content') }} | O'z</label>
-                                            <textarea id="my-editor-oz" class="form-control {{ $errors->has('oz_body') ? 'is-invalid' : '' }}"
-                                                      name="oz_body">{{ old('oz_body') }}</textarea>
-                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="ru" role="tabpanel" aria-labelledby="contact-tab">
                                         <div class="form-group">
@@ -62,11 +79,6 @@ use App\Helpers\CreateInputs;
                                                 class="form-control {{ $errors->has('ru_title') ? 'is-invalid' : '' }}"
                                                 type="text" name="ru_title" id="ru_title"
                                                 value="{{ old('ru_title', '') }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>{{ __('main.main_content') }} | Ру</label>
-                                            <textarea id="my-editor-ru" class="form-control {{ $errors->has('ru_body') ? 'is-invalid' : '' }}"
-                                                      name="ru_body" >{{ old('ru_body') }}</textarea>
                                         </div>
                                     </div>
 
@@ -78,39 +90,14 @@ use App\Helpers\CreateInputs;
                                                 type="text" name="en_title" id="en_title"
                                                 value="{{ old('en_title', '') }}">
                                         </div>
-                                        <div class="form-group">
-                                            <label>{{ __('main.main_content') }} | En</label>
-                                            <textarea id="my-editor-uz" class="form-control {{ $errors->has('en_body') ? 'is-invalid' : '' }}"
-                                                      name="en_body">{{ old('en_body') }}</textarea>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>{{ __('main.categories') }}</strong>
-                                            <select class="form-control" name="category_id">
-                                                <option value="">---</option>
-                                                @foreach($list_categories as $list_category)
-                                                    <option
-                                                        value="{{ $list_category->id }}">{{ $list_category->translate(app()->getLocale())->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>{{ __('main.status') }}</strong>
-                                            <select class="form-control" name="status">
-                                                <option value="1">{{ __('main.active') }}</option>
-                                                <option value="0">{{ __('main.inactive') }}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
                                             <strong class="d-block">{{ __('main.image') }}</strong>
-                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text" name="filepath">
+                                            <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text"
+                                                   name="filepath">
                                             <a id="lfm" data-input="thumbnail" data-preview="holder">
                                                 {{ __('main.choose') }}
                                             </a>

@@ -55,10 +55,6 @@
                                     <td>{{ __('main.title') }}:</td>
                                     <th scope="row">{{ $list->translate('oz')->title ?? '---' }}</th>
                                 </tr>
-                                <tr>
-                                    <td>{{ __('main.main_content') }}:</td>
-                                    <th scope="row">{!!   $list->translate('oz')->body ?? '---' !!}</th>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -69,10 +65,6 @@
                                     <td>{{ __('main.title') }}:</td>
                                     <th scope="row">{{ $list->translate('ru')->title ?? '---' }}</th>
                                 </tr>
-                                <tr>
-                                    <td>{{ __('main.main_content') }}:</td>
-                                    <th scope="row">{!!   $list->translate('ru')->body ?? '---' !!}</th>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -82,10 +74,6 @@
                                 <tr>
                                     <td>{{ __('main.title') }}:</td>
                                     <th scope="row">{{ $list->translate('en')->title ?? '---' }}</th>
-                                </tr>
-                                <tr>
-                                    <td>{{ __('main.main_content') }}:</td>
-                                    <th scope="row">{!!   $list->translate('en')->body ?? '---' !!}</th>
                                 </tr>
                                 </tbody>
                             </table>
@@ -132,10 +120,6 @@
                         <tr>
                             <td>{{ __('main.modifier') }}:</td>
                             <th scope="row">{{ $list->updater->username ?? '---'}}</th>
-                        </tr>
-                        <tr>
-                            <td>Slug:</td>
-                            <th scope="row">{{ $list->slug }}</th>
                         </tr>
                         <tr>
                             <td>{{ __('main.created_at') }}:</td>

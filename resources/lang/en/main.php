@@ -52,7 +52,7 @@ return [
     'blank' => 'Open on blank window',
     'self' => 'Open on same window',
     'management_categories' => 'Management categories',
-    'position'=> 'Position',
+    'position' => 'Position',
     'telegram_link' => 'Telegram profile',
     'linkedin_link' => 'Linkedin profile',
     'facebook_link' => 'Facebook profile',
@@ -66,4 +66,8 @@ return [
     'static' => 'Static',
     'dynamic' => 'Dynamic',
     'leaders' => 'Leaders',
+    'control_panel' => 'Control panel',
+    'logout' => 'Logout',
+    'cancel' => 'Cancel',
+    'logout_info' => 'If you are ready to end up your session press "Logout" below.',
 ];

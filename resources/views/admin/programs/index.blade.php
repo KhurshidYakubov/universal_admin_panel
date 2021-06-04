@@ -10,7 +10,7 @@
                     @include('admin.components.flash-message')
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h1 class="h3 mb-0 text-gray-800">{{ __('main.lists') }}</h1>
+                            <h1 class="h3 mb-0 text-gray-800">{{ __('main.programs') }}</h1>
                             <a href="{{route('programs.create')}}"
                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                     class="fas fa-plus-circle"></i> {{ __('main.add') }}</a>

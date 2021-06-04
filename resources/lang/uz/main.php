@@ -54,7 +54,7 @@ return [
     'self' => 'Тегишли ойнада очилсин',
     'management_categories' => 'Бошқарув категориялари',
     'team' => 'Команда',
-    'position'=> 'Лавозими',
+    'position' => 'Лавозими',
     'telegram_link' => 'Telegram профил',
     'linkedin_link' => 'Linkedin профил',
     'facebook_link' => 'Facebook профил',
@@ -68,4 +68,8 @@ return [
     'static' => 'Статик',
     'dynamic' => 'Динамик',
     'leaders' => 'Лидерлар',
+    'control_panel' => 'Бошқарув панели',
+    'logout' => 'Чиқиш',
+    'cancel' => 'Бекор қилиш',
+    'logout_info' => 'Агар жорий сеансни тугатишга тайёр бўлсангиз, қуйида "Чиқиш"ни танланг.',
 ];

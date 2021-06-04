@@ -24,23 +24,10 @@ class MainController extends Controller
         $links = Lists::where('category_id', 3)->latest()->take(10)->get();
         $team_members = Management::where('category_id', 1)->latest()->take(4)->get();
 
-//        dd($header_tree);
 
         return view('user.index', compact('top_menu_tree', 'header_tree', 'news', 'statistics', 'links', 'team_members'));
     }
 
-//    public function programs()
-//    {
-//        $top_menu = Menu::where('category_id', 1)->where('status', 1)->get();
-//        $top_menu_tree = Menu::buildTree($top_menu->toArray());
-//
-//        $header = Menu::where('category_id', 2)->where('status', 1)->get();
-//        $header_tree = Menu::buildTree($header->toArray());
-//
-//        $programs = Lists::where('category_id', 4)->get();
-//
-//        return view('user.programs', compact('top_menu_tree', 'header_tree', 'programs'));
-//    }
 
     public function pages($slug)
     {

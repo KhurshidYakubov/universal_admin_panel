@@ -68,4 +68,8 @@ return [
     'static' => 'Statik',
     'dynamic' => 'Dinamik',
     'leaders' => 'Liderlar',
+    'control_panel' => 'Boshqaruv paneli',
+    'logout' => 'Chiqish',
+    'cancel' => 'Bekor qilish',
+    'logout_info' => 'Agar joriy seansni tugatishga tayyor bo\'lsangiz, quyida "Chiqish"ni tanlang.',
 ];

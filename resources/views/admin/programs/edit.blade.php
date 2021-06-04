@@ -127,7 +127,7 @@
 
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong class="d-block">{{ __('main.image') }}</strong>
+                                            <strong class="d-block">{{ __('main.leaders') }}</strong>
                                             <select class="form-control form-select" multiple="" name="leaders[]">
                                                 @foreach($leaders as $leader)
                                                     <option

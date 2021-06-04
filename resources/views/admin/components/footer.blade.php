@@ -23,7 +23,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">{{ __('main.cancel') }}</button>
                 <form method="POST" action="#">
                     @csrf
-                    <a href="/logout">Chiqish</a>
+                    <a href="/logout" class="btn btn-info">{{ __('main.logout') }}</a>
                 </form>
             </div>
         </div>

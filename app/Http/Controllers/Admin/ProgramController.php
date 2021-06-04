@@ -73,9 +73,12 @@ class ProgramController extends Controller
      */
     public function store(Request $request, User $user, Lists $lists)
     {
-//        $request->validate([
-//            'title' => 'required',
-//        ]);
+        $request->validate([
+            'oz_title' => 'required',
+            'oz_body' => 'required',
+            'filepath' => 'required',
+            'leaders' => 'required',
+        ]);
         $get_slug_element = '';
         $user = auth()->user();
         $slug_array = [
@@ -107,12 +110,11 @@ class ProgramController extends Controller
                 'body' => $request->en_body,
             ],
             'anons_image' => $request->filepath,
-            'leaders' => $request->leaders,
+            'leaders' => json_encode($request->leaders),
             'category_id' => $request->category_id,
             'status' => $request->status,
             'creator_id' => $user->id ?? 1,
         ];
-//            dd($data);
         $list = Lists::create($data);
         return redirect()->route('programs.show', $list->id)->with('success', __('main.messages.create'));
     }
@@ -126,7 +128,10 @@ class ProgramController extends Controller
     public function show(int $id)
     {
         $list = Lists::findOrFail($id);
-        return view('admin.programs.show', compact('list'));
+        $leaders = Management::where('category_id', 1)->where('status', 1)->get();
+        $leader_id = json_decode($list->leaders);
+
+        return view('admin.programs.show', compact('list', 'leaders', 'leader_id'));
     }
 
     /**
@@ -139,8 +144,10 @@ class ProgramController extends Controller
     {
         $list = Lists::findOrFail($id);
         $list_categories = ListCategory::where('type_id', 3)->where('status', 1)->get();
+        $leaders = Management::where('category_id', 1)->where('status', 1)->get();
+        $leader_id = json_decode($list->leaders);
 
-        return view('admin.programs.edit', compact('list', 'list_categories'));
+        return view('admin.programs.edit', compact('list', 'list_categories', 'leader_id', 'leaders'));
     }
 
     /**
@@ -152,6 +159,13 @@ class ProgramController extends Controller
      */
     public function update(Request $request, Lists $lists, $id): \Illuminate\Http\RedirectResponse
     {
+        $request->validate([
+            'oz_title' => 'required',
+            'oz_body' => 'required',
+            'filepath' => 'required',
+            'leaders' => 'required',
+        ]);
+
         $list = Lists::findOrFail($id);
         $user = auth()->user();
 
@@ -169,6 +183,7 @@ class ProgramController extends Controller
                 'body' => $request->en_body,
             ],
             'anons_image' => $request->filepath,
+            'leaders' => json_encode($request->leaders),
             'category_id' => $request->category_id,
             'status' => $request->status,
             'modifier_id' => $user->id ?? 1,

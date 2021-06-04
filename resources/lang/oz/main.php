@@ -67,4 +67,5 @@ return [
     'page_type' => 'Sahifa turi',
     'static' => 'Statik',
     'dynamic' => 'Dinamik',
+    'leaders' => 'Liderlar',
 ];

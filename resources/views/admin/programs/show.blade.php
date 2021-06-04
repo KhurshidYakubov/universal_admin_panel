@@ -125,6 +125,18 @@
                             </th>
                         </tr>
                         <tr>
+                            <td>{{ __('main.leaders') }}:</td>
+                            <th scope="row">
+                                @for($i = 0; $i<count($leader_id); $i++)
+                                    @foreach ($leaders as $leader)
+                                        @if($leader_id[$i] == $leader->id)
+                                            {{ $leader->translate(app()->getLocale() ?? '')->title }} |
+                                        @endif
+                                    @endforeach
+                                @endfor
+                            </th>
+                        </tr>
+                        <tr>
                             <td>{{ __('main.creator') }}:</td>
                             <th scope="row">{{ $list->creator->username }}</th>
                         </tr>

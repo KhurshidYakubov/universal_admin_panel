@@ -67,4 +67,5 @@ return [
     'page_type' => 'Тип страницы',
     'static' => 'Статик',
     'dynamic' => 'Динамик',
+    'leaders' => 'Лидеры',
 ];

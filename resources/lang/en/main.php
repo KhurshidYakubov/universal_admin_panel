@@ -65,4 +65,5 @@ return [
     'page_type' => 'Page type',
     'static' => 'Static',
     'dynamic' => 'Dynamic',
+    'leaders' => 'Leaders',
 ];

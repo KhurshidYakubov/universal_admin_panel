@@ -5,7 +5,7 @@
         @include('user.components.navbar')
         <div class="container d-flex align-items-center flex-fill">
             <div class="page-data">
-                <h1 class="page-title">Our team</h1>
+                <h1 class="page-title">{{ __('main.programs') }}</h1>
                 <nav aria-label="breadcrumb" class="custom-breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -26,6 +26,10 @@
         <div class="container">
             <div class="row program-card-box">
                 @foreach($programs as $item)
+                    <?php
+                    if(isset($item->leaders)){
+                    $leader_id = json_decode($item->leaders);
+                    ?>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 program-card-item">
                         <div class="card">
                             <div class="card-header text-center">
@@ -39,7 +43,14 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-title">
-                                    Лидеры: Akmal Allakuliev, Mashrab Berdikulov, Nurbek Meyilev
+                                    {{ __('main.leaders') }}:
+                                    @for($i = 0; $i < count($leader_id); $i++)
+                                        @foreach ($leaders as $leader)
+                                            @if($leader_id[$i] == $leader->id)
+                                                {{ $leader->translate(app()->getLocale() ?? '')->title }},
+                                            @endif
+                                        @endforeach
+                                    @endfor
                                 </div>
                                 <div class="card-short">
                                     {!!   Str::limit($item->translate(app()->getLocale())->body, 145) !!}
@@ -55,6 +66,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 @endforeach
             </div>
         </div>

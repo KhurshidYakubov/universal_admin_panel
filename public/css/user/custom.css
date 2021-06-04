@@ -2,6 +2,10 @@ a.list-group-item {
     font-size: 1.143em;
     color: #545454;
     text-decoration: none;
+}
+a.list-group-item:hover {
+    color: #7eb928;
+    text-decoration: none;
     transition: all .35s ease;
 }
 

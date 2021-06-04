@@ -105,7 +105,9 @@ class MainController extends Controller
 
         $programs = Lists::where('category_id', 4)->where('status', 1)->orderBy('id', 'desc')->paginate(12);
 
-        return view('user.programs_list', compact('top_menu_tree', 'header_tree', 'programs'));
+        $leaders = Management::where('category_id', 1)->where('status', 1)->get();
+
+        return view('user.programs_list', compact('top_menu_tree', 'header_tree', 'programs', 'leaders'));
     }
 
     public function programsItem($id)

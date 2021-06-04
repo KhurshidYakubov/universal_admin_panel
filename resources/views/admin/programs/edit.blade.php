@@ -34,6 +34,28 @@
                                            aria-controls="profile" aria-selected="false">EN</a>
                                     </li>
                                 </ul>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>{{ __('main.categories') }}</strong>
+                                            <select class="form-control" name="category_id">
+                                                @foreach($list_categories as $list_category)
+                                                    <option
+                                                        value="{{ $list_category->id }}" {{ $list->category_id == $list_category->id ? 'selected' : '' }}>{{ $list_category->translate(app()->getLocale())->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>{{ __('main.status') }}</strong>
+                                            <select class="form-control" name="status">
+                                                <option value="1">{{ __('main.active') }}</option>
+                                                <option value="0">{{ __('main.inactive') }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="oz" role="tabpanel"
                                          aria-labelledby="home-tab">
@@ -92,26 +114,6 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>{{ __('main.categories') }}</strong>
-                                            <select class="form-control" name="category_id">
-                                                @foreach($list_categories as $list_category)
-                                                    <option value="{{ $list_category->id }}" {{ $list->category_id == $list_category->id ? 'selected' : '' }}>{{ $list_category->translate(app()->getLocale())->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>{{ __('main.status') }}</strong>
-                                            <select class="form-control" name="status">
-                                                <option value="1">{{ __('main.active') }}</option>
-                                                <option value="0">{{ __('main.inactive') }}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
                                             <strong class="d-block">{{ __('main.image') }}</strong>
                                             <input id="thumbnail" class="form-control col-sm-11 d-inline" type="text"
                                                    name="filepath" value="{{ $list->anons_image }}">
@@ -120,6 +122,18 @@
                                             </a>
                                             <img src='{{ $list->anons_image  }}' alt=""
                                                  style="width: 100px; margin-top: 5px;">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong class="d-block">{{ __('main.image') }}</strong>
+                                            <select class="form-control form-select" multiple="" name="leaders[]">
+                                                @foreach($leaders as $leader)
+                                                    <option
+                                                        value="{{ $leader->id }}">{{ $leader->translate(app()->getLocale())->title ?? '---' }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 

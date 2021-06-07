@@ -55,7 +55,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        $list_categories = ListCategory::where('type_id', 7)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 6)->where('status', 1)->get();
 
         return view('admin.pages.create', compact('list_categories'));
     }
@@ -131,7 +131,7 @@ class PageController extends Controller
     public function edit(int $id)
     {
         $list = Lists::findOrFail($id);
-        $list_categories = ListCategory::where('type_id', 7)->where('status', 1)->get();
+        $list_categories = ListCategory::where('type_id', 6)->where('status', 1)->get();
 
         return view('admin.pages.edit', compact('list', 'list_categories'));
     }

@@ -13,4 +13,47 @@
     <link rel="stylesheet" href="{{ asset('css/user/custom.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <title>IT Park</title>
+    <style>
+        @font-face {
+            font-family: "Montserrat";
+            src: url('{{ asset('fonts/Montserrat-SemiBold.woff') }}') format("woff");
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url('{{ asset('fonts/Montserrat-Bold.woff') }}') format("woff");
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url('{{ asset('fonts/Montserrat-Light.woff') }}') format("woff");
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url('{{ asset('fonts/Montserrat-Regular.woff') }}') format("woff");
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url('{{ asset('fonts/Montserrat-Medium.woff') }}') format("woff");
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url('{{ asset('fonts/Montserrat-Black.woff') }}') format("woff");
+            font-style: normal;
+            font-weight: 900;
+        }
+    </style>
 </head>

@@ -17,3 +17,7 @@ section#top-menu {
     position: relative;
     z-index: 2;
 }
+
+#page-header {
+    z-index: 0;
+}

@@ -71,9 +71,9 @@ Route::group([
     });
 
 
-    Route::get('/file_test', function () {
-        return view('file_test');
-    });
+//    Route::get('/file_test', function () {
+//        return view('file_test');
+//    });
 
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();

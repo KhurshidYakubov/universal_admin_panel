@@ -75,9 +75,12 @@
                             @endif
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/oz"><i class="flag-icon flag-icon-uz"></i> O'Z</a>
-                            <a class="dropdown-item" href="/ru"><i class="flag-icon flag-icon-ru"></i> RU</a>
-                            <a class="dropdown-item" href="/en"><i class="flag-icon flag-icon-gb"></i> EN</a>
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                                   href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                            @endforeach
                         </div>
                     </li>
                     <li class="nav-item">

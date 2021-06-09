@@ -26,10 +26,7 @@
         <div class="container">
             <div class="row program-card-box">
                 @foreach($programs as $item)
-                    <?php
-                    if(isset($item->leaders)){
-                    $leader_id = json_decode($item->leaders);
-                    ?>
+
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 program-card-item">
                         <div class="card">
                             <div class="card-header text-center">
@@ -43,6 +40,10 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-title">
+                                    <?php
+                                    if(isset($item->leaders)){
+                                    $leader_id = json_decode($item->leaders);
+                                    ?>
                                     {{ __('main.leaders') }}:
                                     @for($i = 0; $i < count($leader_id); $i++)
                                         @foreach ($leaders as $leader)
@@ -51,9 +52,10 @@
                                             @endif
                                         @endforeach
                                     @endfor
+                                    <?php } ?>
                                 </div>
                                 <div class="card-short">
-                                    {!!   Str::limit($item->translate(app()->getLocale())->body, 145) !!}
+                                    {!!   Str::limit($item->translate(app()->getLocale())->body, 130) !!}
                                 </div>
                                 <div class="card-btn">
                                     <button type="button" class="btn btn-more">
@@ -66,7 +68,6 @@
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
                 @endforeach
             </div>
         </div>

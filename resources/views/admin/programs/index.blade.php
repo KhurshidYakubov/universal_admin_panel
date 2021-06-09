@@ -19,7 +19,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                    <form action="{{ route('news.index') }}" method="GET" id='myform'>
+                                    <form action="{{ route('programs.index') }}" method="GET" id='myform'>
                                         @csrf
                                         <tr>
                                             <th scope="col">{{ __('main.id') }}</th>

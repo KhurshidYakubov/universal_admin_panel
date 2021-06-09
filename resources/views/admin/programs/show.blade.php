@@ -127,13 +127,17 @@
                         <tr>
                             <td>{{ __('main.leaders') }}:</td>
                             <th scope="row">
-                                @for($i = 0; $i<count($leader_id); $i++)
-                                    @foreach ($leaders as $leader)
-                                        @if($leader_id[$i] == $leader->id)
-                                            {{ $leader->translate(app()->getLocale() ?? '')->title }} |
-                                        @endif
-                                    @endforeach
-                                @endfor
+                                @if(isset($leader_id))
+                                    @for($i = 0; $i<count($leader_id); $i++)
+                                        @foreach ($leaders as $leader)
+                                            @if($leader_id[$i] == $leader->id)
+                                                {{ $leader->translate(app()->getLocale() ?? '')->title }} |
+                                            @endif
+                                        @endforeach
+                                    @endfor
+                                @else
+                                    ---
+                                @endif
                             </th>
                         </tr>
                         <tr>

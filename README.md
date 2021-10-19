@@ -13,7 +13,7 @@ It has been integrated with Uzbekistan's National Identification System [OneID](
 - Installed MySQL 
 - Installed Git
 - Some experience with PHP, Laravel, MySQL, Composer and Git
-- client_id and client_secret from [OneID](https://id.egov.uz/) (optinal)
+- client_id and client_secret from [OneID](https://id.egov.uz/) (optional)
     
     **P.S If you doesn't need integration with OneID just change the logic of auth as you need :)**
 
